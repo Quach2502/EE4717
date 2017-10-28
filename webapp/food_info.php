@@ -27,6 +27,8 @@ echo '
 <!DOCTYPE html>
 <html lang = "en">
 <head>
+	<script type="text/javascript" src = "../js/utilsFoodPage.js"></script>
+	<script type ="text/javascript" src = "../js/initFoodPage.js"></script>
 	<title>Food Product</title>
 	<meta charset = "utf-8">
 	<style>
@@ -45,7 +47,7 @@ echo '
 		height:70%;
 		background-color:rgb(226,210,176);
 	}
-	#foodimage { 
+	#food_image { 
 		width: 100%;
 		height:100%;
 	} 
@@ -70,17 +72,33 @@ echo '
 			<h1>Nav Bar</h1>
 		</header>
 		<div id ="leftcolumn">
-			<img id ="foodimage" src = '.$imageLink.'>
+			<img id ="food_image" src = '.$imageLink.'>
 		</div>
 		<div id = "rightcolumn">
-			<div id = "food name">
+			<div id = "food_name">
 				'.$foodName.'
 			</div>
-			<div id = "food description">
+			<div id = "food_description">
 				'.$description.'
 			</div>
-			<div id = "food price">
+			<div id = "food_price" value = '.$price.'>
 				'.$price.'
+			</div>
+			<button type="button" id ="order_init">Order Now!</button><br>
+			<div id="getQuantity" style="display:none;">
+				<table>
+					<tr>		
+						<td>
+							<input id="quantity" type="number" value="0" style="width:30%;">
+						</td>
+						<td>
+							<button type="button" id ="add_to_cart">Add To Cart</button>
+						</td>
+					</tr>
+					<tr>
+						<td><input id="subtotal" type="text" value="0" style="width:30%;"></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
