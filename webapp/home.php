@@ -30,10 +30,12 @@ for ($i=0; $i<$num_result; $i++){
     $imageDescription = $row['description'];
 
     echo "<div class='five-column'> ";
-    echo "<img src='".$imageLink."' class='img-thumbnail'>";
-    echo "<h1> Food Name: ".$imageName."</h1>";
-//    echo "<p> Food Id: ".$imageId."</p>";
-    echo "<p> Food Description: ".$imageDescription."</p>";
+        echo "<div class='content-centered'>";
+            echo "<img src='".$imageLink."' class='img-thumbnail'>";
+            echo "<h2> Food Name: ".$imageName."</h2>";
+            //    echo "<p> Food Id: ".$imageId."</p>";
+            echo "<p> Food Description: ".$imageDescription."</p>";
+        echo "</div>";
     echo "</div>";
 }
 ?>
@@ -47,13 +49,24 @@ for ($i=0; $i<$num_result; $i++){
             width: 19%;
             display: table-cell;
             vertical-align: middle;
+            text-align: center;
         }
+
         .img-thumbnail{
             width: 240px;
             height: 160px;
             overflow: hidden;
 
         }
+
+        .content-centered{
+            margin: auto;
+            display: inline-block;
+        }
+        img+h2{
+            margin: 0px;
+        }
+
     </style>
 </head>
 </html>

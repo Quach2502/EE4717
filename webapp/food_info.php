@@ -17,8 +17,7 @@ if(isset($_POST['foodid'])){
 		$desciption =  $row['description'];
 		$foodName =  $row['foodname'];
 		$imageLink =  $row['imagelink'];
-		$restaurant = $row['restaurant'];
-	}
+		$restaurant = $row['restaurant'];}
 }
 
 
