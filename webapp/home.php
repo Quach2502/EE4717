@@ -76,7 +76,7 @@
          * Time: 4:30 PM
          */
 
-        @$db = new mysqli('localhost', 'root','' , '');
+        @$db = new mysqli('localhost', 'root','' , 'ee4717');
         if (mysqli_connect_errno()){
             echo 'cannot connect to database';
             exit;
@@ -89,8 +89,10 @@
 
         $query = "SELECT * FROM `food`";
         $result = $db->query($query);
-        $num_result = $result->num_rows;
-//        echo $num_result;
+        if(isset($result)){
+        $num_result = mysqli_num_rows($result);
+    }
+       // echo $num_result;
 
         for ($i=0; $i<$num_result; $i++){
             $row = $result->fetch_assoc();
