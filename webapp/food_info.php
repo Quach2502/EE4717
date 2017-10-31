@@ -1,5 +1,5 @@
 <?php
-@$db = new mysqli('localhost','ee4717','','');
+@$db = new mysqli('localhost','root','11111111','ee4717');
 if(mysqli_connect_errno()){
 	echo 'error';
 	exit;
@@ -16,9 +16,8 @@ if(isset($_POST['foodid'])){
 	while($row = mysqli_fetch_array($result)) {
 		$desciption =  $row['description'];
 		$foodName =  $row['foodname'];
-		$imageLink =  $row['imagelink'];
-		$restaurant = $row['restaurant'];
-	}
+		$imageLink =  "../asset/" .$row['imagelink'];
+		$restaurant = $row['restaurant'];}
 }
 
 
