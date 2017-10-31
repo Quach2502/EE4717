@@ -1,10 +1,10 @@
-
 <html>
 <head>
     <style>
         html{
             max_width: 90%;
         }
+
         nav {
             text-align: center;
             background: rgba(10, 14, 21, 0.58);
@@ -18,10 +18,12 @@
             font-weight: 700;
             color: white;
         }
+
         .content-wrap{
             /*max-width: 90%;*/
             margin: 20px auto;
         }
+
         .five-column{
             float: left;
             overflow: hidden;
@@ -30,9 +32,11 @@
             vertical-align: middle;
             text-align: center;
         }
+
         .five-column::after{
             clear:both;
         }
+
         .img-thumbnail{
             width: 240px;
             height: 160px;
@@ -44,11 +48,10 @@
             margin: auto;
             display: inline-block;
         }
+
         img+h2{
             margin: 0px;
         }
-
-
     </style>
 </head>
 <body>
@@ -61,7 +64,7 @@
         <a href="#feedback">Feedback</a>
         <a href="#account">My Account</a>
         <a href="#login">Login</a>
-        <a href="#cart">Cart</a>
+        <a href="cart.php">Cart</a>
     </nav>
 
     <div class = "content-wrap">
