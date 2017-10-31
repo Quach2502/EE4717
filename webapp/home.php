@@ -76,7 +76,7 @@
          * Time: 4:30 PM
          */
 
-        @$db = new mysqli('localhost', 'root', 11111111, myuser);
+        @$db = new mysqli('localhost', 'root', 11111111, ee4717);
         if (mysqli_connect_errno()){
             echo 'cannot connect to database';
             exit;
@@ -87,25 +87,28 @@
         $imageLink = "";
         $imageDescription = "";
 
-        $query = "select * from foodimage";
+        $query = "select * from food";
         $result = $db->query($query);
         $num_result = $result->num_rows;
-        //echo $num_result;
+//        echo $num_result;
 
         for ($i=0; $i<$num_result; $i++){
             $row = $result->fetch_assoc();
-            $imageId = $row['id'];
-            $imageName = $row['name'];
-            $imageLink = "../asset/" . $row['link'];
-            $imageDescription = $row['description'];
+            $foodId = $row['foodid'];
+            $foodName = $row['name'];
+            $imageLink = "../asset/" . $row['imagelink'];
+            $foodPrice = $row['price'];
 
             echo "<div class='five-column'> ";
-            echo "<div class='content-centered'>";
-            echo "<img src='".$imageLink."' class='img-thumbnail'>";
-            echo "<h2> Food Name: ".$imageName."</h2>";
-            //    echo "<p> Food Id: ".$imageId."</p>";
-            echo "<p> Food Description: ".$imageDescription."</p>";
-            echo "</div>";
+                echo "<form action='food_info.php' method='post'>";
+                    echo "<div class='content-centered'>";
+                        echo "<input name='foodid' value='$foodId' hidden>";
+                        echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
+                        echo "<h2> Food Name: ".$foodName."</h2>";
+                        //    echo "<p> Food Id: ".$imageId."</p>";
+                        echo "<p> Price: SGD $".$foodPrice."</p>";
+                    echo "</div>";
+                echo "</form>";
             echo "</div>";
         }
 
