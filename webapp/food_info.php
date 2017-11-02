@@ -68,9 +68,9 @@
 		</header>
 		<?php
 		function __autoload($class_name) {
-			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
+			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
 		}
-		@$db = new mysqli('localhost','root','','ee4717');
+		@$db = new mysqli('localhost','f36ee','f36ee','f36ee');
 		if(mysqli_connect_errno()){
 			echo 'error';
 			exit;
@@ -89,7 +89,8 @@
 			$subtotal = $_POST['subtotal'];
 			$quantity = $_POST['quantity'];
 			$foodId = $_POST['foodid'];
-			if (array_key_exists($foodId,$_SESSION['cart'])){
+			$name = $_POST['foodname'];
+			if (isset($_SESSION['cart'][$foodId]) ||array_key_exists($foodId,$_SESSION['cart'])){
 				$_SESSION['cart'][$foodId]->quantity += $quantity;
 				$_SESSION['cart'][$foodId]->subtotal += $subtotal;
 			}
@@ -97,9 +98,9 @@
 				$infoCartItem = new InfoCartItem();
 				$infoCartItem->quantity = $quantity;
 				$infoCartItem->subtotal = $subtotal;
+				$infoCartItem->name = $name;
 				$_SESSION['cart'][$foodId] = $infoCartItem;
 			}
-			// print_r($_SESSION['cart']);
 		}
 		if(isset($_POST['foodid'])){
 			$foodId = $_POST['foodid'];
@@ -126,7 +127,8 @@
 
 		echo '<button type="button" id ="order_init">Order Now!</button><br>';
 		echo '<form  id = "add_to_cart_form" method ="post" action="food_info.php">';
-		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';?>
+		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';
+		echo	'<input name="foodname" type="hidden" value='.$foodName.'>';?>
 		<div id="getQuantity" style="display:none;">
 			<table>
 				<tr>	

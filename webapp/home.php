@@ -76,7 +76,7 @@
          * Time: 4:30 PM
          */
 
-        @$db = new mysqli('localhost', 'root','' , 'ee4717');
+        @$db = new mysqli('localhost', 'f36ee','f36ee' , 'f36ee');
         if (mysqli_connect_errno()){
             echo 'cannot connect to database';
             exit;

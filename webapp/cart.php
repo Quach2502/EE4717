@@ -76,10 +76,10 @@
          * Time: 4:30 PM
          */
         function __autoload($class_name) {
-        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
+        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
         }
 
-        @$db = new mysqli('localhost', 'root','' , 'ee4717');
+        @$db = new mysqli('localhost', 'f36ee','f36ee' , 'f36ee');
         if (mysqli_connect_errno()){
         	echo 'cannot connect to database';
         	exit;
@@ -91,12 +91,42 @@
         print_r($_SESSION['cart']);
         $num_items_cart = count($_SESSION['cart']);
         if($num_items_cart > 0){
-
+        	$total = 0;
+        	echo "<table border = '1'><thead>
+			<tr>
+			<th>Name</th>
+			<th>Quantity</th>
+			<th>Subtotal</th>
+			</tr>
+			</thead>";
+			echo '<p><strong>Your current cart</strong></p><br>';
+        	foreach($_SESSION['cart'] as $key=>$value){
+        		$qt = $value->quantity;
+        		$name = $value->name;
+        		$stotal = $value->subtotal;
+        		$total += $stotal;
+        		echo "<tr>".
+				"<td>"
+				."<form id=".$key." action='food_info.php' method='post'>"
+				."<input hidden name='foodid' value=".$key.">"
+				."<a href='#' onclick='document.getElementById(".$key.").submit()''>"
+				.$name
+				."</a>"
+				."</form>"
+				."</td>"
+				."<td>"
+				.$qt
+				."</td>"
+				."<td>"
+				.$stotal
+				."</td>
+				</tr>";
+        	}
+        	echo "</table>";
 
         }
         else{
         	echo"<p>Your cart is empty</p>";
-
         }
 
        // echo $num_result;
