@@ -88,41 +88,55 @@
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
         }
-        print_r($_SESSION['cart']);
+        if(isset($_POST['delete_cart_item'])){
+        	$item_to_delete = $_POST['delete_cart_item'];
+        	// print_r($item_to_delete);
+        	unset($_SESSION['cart'][$item_to_delete]);
+        }
+        // print_r($_SESSION['cart']);
         $num_items_cart = count($_SESSION['cart']);
         if($num_items_cart > 0){
         	$total = 0;
-        	echo "<table border = '1'><thead>
-			<tr>
-			<th>Name</th>
-			<th>Quantity</th>
-			<th>Subtotal</th>
-			</tr>
-			</thead>";
-			echo '<p><strong>Your current cart</strong></p><br>';
+        	echo "<table border = '0'><thead>
+        	<tr>
+        	<th>Name</th>
+        	<th>Quantity</th>
+        	<th>Subtotal</th>
+        	</tr>
+        	</thead>";
+        	echo '<p><strong>Your current cart</strong></p><br>';
         	foreach($_SESSION['cart'] as $key=>$value){
         		$qt = $value->quantity;
         		$name = $value->name;
         		$stotal = $value->subtotal;
         		$total += $stotal;
+        		$delete_key = "delete_".$key;
         		echo "<tr>".
-				"<td>"
-				."<form id=".$key." action='food_info.php' method='post'>"
-				."<input hidden name='foodid' value=".$key.">"
-				."<a href='#' onclick='document.getElementById(".$key.").submit()''>"
-				.$name
-				."</a>"
-				."</form>"
-				."</td>"
-				."<td>"
-				.$qt
-				."</td>"
-				."<td>"
-				.$stotal
-				."</td>
-				</tr>";
+        		"<td>"
+        		."<form id=".$key." action='food_info.php' method='post'>"
+        		."<input hidden name='foodid' value=".$key.">"
+        		."<a href='#' onclick='document.getElementById(".$key.").submit()'>"
+        		.$name
+        		."</a>"
+        		."</form>"
+        		."</td>"
+        		."<td>"
+        		.$qt
+        		."</td>"
+        		."<td>"
+        		.$stotal
+        		."</td>"
+        		."<td>"
+        		."<form id = 'delete_".$key."' method='post' action='cart.php'"
+        		."<button><a href='#' onclick='document.getElementById(\"".$delete_key."\").submit()'>&#10006</a></button>"
+        		."<input hidden name='delete_cart_item' value=".$key.">"
+        		."</form>"
+        		."</td>
+        		</tr>";
         	}
         	echo "</table>";
+        	echo "<p>Total Price: ".$total."$<br>";
+        	echo "<button><a href='purchase.php'>Purchase Cart</a></button>";
 
         }
         else{
