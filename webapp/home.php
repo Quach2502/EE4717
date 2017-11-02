@@ -1,8 +1,25 @@
+<!--/**-->
+<!--* Created by IntelliJ IDEA.-->
+<!--* User: long-->
+<!--* Date: 30/10/17-->
+<!--* Time: 4:30 PM-->
+<!--*/-->
+
 <html>
 <head>
     <style>
         html{
-            max_width: 90%;
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after{
+            box-sizing: inherit;
+        }
+
+        body{
+            margin: 0 auto;
+            max-width: 90%;
+
         }
 
         nav {
@@ -20,8 +37,10 @@
         }
 
         .content-wrap{
-            /*max-width: 90%;*/
+
+            /*max-width: 1500px;*/
             margin: 20px auto;
+            text-align: center;
         }
 
         .five-column{
@@ -38,8 +57,8 @@
         }
 
         .img-thumbnail{
-            width: 240px;
-            height: 160px;
+            width: 280px;
+            height: 210px;
             overflow: hidden;
 
         }
@@ -66,15 +85,10 @@
         <a href="#login">Login</a>
         <a href="cart.php">Cart</a>
     </nav>
-
+</header>
+<main>
     <div class = "content-wrap">
         <?php
-        /**
-         * Created by IntelliJ IDEA.
-         * User: long
-         * Date: 30/10/17
-         * Time: 4:30 PM
-         */
 
         @$db = new mysqli('localhost', 'root', 11111111, ee4717);
         if (mysqli_connect_errno()){
@@ -114,6 +128,7 @@
 
         ?>
     </div>
-</header>
+</main>
+
 </body>
 </html>
