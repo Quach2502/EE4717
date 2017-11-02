@@ -67,14 +67,13 @@
 			</nav>
 		</header>
 		<?php
+		function __autoload($class_name) {
+			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
+		}
 		@$db = new mysqli('localhost','root','','ee4717');
 		if(mysqli_connect_errno()){
 			echo 'error';
 			exit;
-		}
-		class InfoCartItem{
-			public $quantity;
-			public $subtotal;
 		}
 		$description ='Description here';
 		$foodName = 'Name here';
