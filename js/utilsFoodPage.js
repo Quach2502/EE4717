@@ -1,5 +1,5 @@
 function computeFoodPrice(event){
-	var price = document.getElementById('food_price').value;
+	var price = document.getElementById('food_price').innerHTML;
 	var currentDom = event.currentTarget;
 	var quantity = currentDom.value;
 	if(quantity < 0){
