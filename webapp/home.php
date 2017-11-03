@@ -7,7 +7,8 @@
 
 <html>
 <head>
-    <script src="../js/slider.js"></script>
+
+
     <style>
         html{
             box-sizing: border-box;
@@ -81,12 +82,12 @@
 
         /* Slideshow container */
         .slideshow-container {
-            max-width: 1000px;
+            max-width: 500px;
             position: relative;
             margin: auto;
         }
 
-        .slider {
+        .myslider {
             display: none;
         }
 
@@ -207,8 +208,6 @@
         <a href="#login">Login</a>
         <a href="cart.php">Cart</a>
     </nav>
-
-
 </header>
 <main>
     <div class = "content-wrap">
@@ -225,20 +224,56 @@
 
         <section id="slider">
             <div class = "slideshow-container">
-                <div class = "slider fade">
+                <div class = "myslider fade five-column ">
                     <img src = "../asset/image1.jpg" style="width: 100%">
                     <div class ="caption">Caption 1</div>
                 </div>
 
-                <div class = "slider fade">
+                <div class = "myslider fade five-column ">
                     <img src = "../asset/image2.jpg" style="width: 100%">
                     <div class ="caption">Caption 2</div>
                 </div>
 
-                <div class = "slider fade">
+                <div class = "myslider fade five-column ">
                     <img src = "../asset/image3.jpg" style="width: 100%">
                     <div class ="caption">Caption 3</div>
                 </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image4.jpeg" style="width: 100%">
+                    <div class ="caption">Caption 4</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image5.jpg" style="width: 100%">
+                    <div class ="caption">Caption 5</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image6.jpg" style="width: 100%">
+                    <div class ="caption">Caption 6</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image7.jpeg" style="width: 100%">
+                    <div class ="caption">Caption 7</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image8.jpg" style="width: 100%">
+                    <div class ="caption">Caption 7</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image9.jpeg" style="width: 100%">
+                    <div class ="caption">Caption 7</div>
+                </div>
+
+                <div class = "myslider fade five-column ">
+                    <img src="../asset/image10.jpeg" style="width: 100%">
+                    <div class ="caption">Caption 7</div>
+                </div>
+
 
                 <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>
                 <a class="next" onclick="sliderPlus(1)">&#10095;</a>
@@ -255,55 +290,56 @@
         <section id = "food-thumbnail">
         <?php
 
-        @$db = new mysqli('localhost', 'root', 11111111, ee4717);
-        if (mysqli_connect_errno()){
-            echo 'cannot connect to database';
-            exit;
-        }
-
-        $imageId ="";
-        $imageName="";
-        $imageLink = "";
-        $imageDescription = "";
-
-        $query = "select * from food";
-        $result = $db->query($query);
-        $num_result = $result->num_rows;
-//        echo $num_result;
-
-        for ($i=0; $i<$num_result; $i++){
-
-            $row = $result->fetch_assoc();
-            $foodId = $row['foodid'];
-            $foodName = $row['name'];
-            $imageLink = "../asset/" . $row['imagelink'];
-            $foodPrice = $row['price'];
-            if ($i % 5 == 0){
-                echo"<div class='row'>";
+            @$db = new mysqli('localhost', 'root', 11111111, ee4717);
+            if (mysqli_connect_errno()){
+                echo 'cannot connect to database';
+                exit;
             }
 
-            echo "<div class='five-column'> ";
-                echo "<form action='food_info.php' method='post'>";
-                    echo "<div class='content-centered'>";
-                        echo "<input name='foodid' value='$foodId' hidden>";
-                        echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
-                        echo "<h2> Food Name: ".$foodName."</h2>";
-                        //    echo "<p> Food Id: ".$imageId."</p>";
-                        echo "<p> Price: SGD $".$foodPrice."</p>";
-                    echo "</div>";
-                echo "</form>";
-            echo "</div>";
+            $imageId ="";
+            $imageName="";
+            $imageLink = "";
+            $imageDescription = "";
 
-            if ($i %5 == 4){
+            $query = "select * from food";
+            $result = $db->query($query);
+            $num_result = $result->num_rows;
+    //        echo $num_result;
+
+            for ($i=0; $i<$num_result; $i++){
+
+                $row = $result->fetch_assoc();
+                $foodId = $row['foodid'];
+                $foodName = $row['name'];
+                $imageLink = "../asset/" . $row['imagelink'];
+                $foodPrice = $row['price'];
+                if ($i % 5 == 0){
+                    echo"<div class='row'>";
+                }
+
+                echo "<div class='five-column'> ";
+                    echo "<form action='food_info.php' method='post'>";
+                        echo "<div class='content-centered'>";
+                            echo "<input name='foodid' value='$foodId' hidden>";
+                            echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
+                            echo "<h2> Food Name: ".$foodName."</h2>";
+                            //    echo "<p> Food Id: ".$imageId."</p>";
+                            echo "<p> Price: SGD $".$foodPrice."</p>";
+                        echo "</div>";
+                    echo "</form>";
                 echo "</div>";
+
+                if ($i %5 == 4){
+                    echo "</div>";
+                }
             }
-        }
 
         ?>
         </section>
     </div>
 
 </main>
-
+<script src="../js/initHomePage.js"></script>
+<script src="../js/slider.js"></script>
 </body>
 </html>
