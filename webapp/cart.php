@@ -79,11 +79,7 @@
         	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
         }
 
-        @$db = new mysqli('localhost', 'f36ee','f36ee' , 'f36ee');
-        if (mysqli_connect_errno()){
-        	echo 'cannot connect to database';
-        	exit;
-        }
+        include "dbconnect.php";
         session_start();
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
