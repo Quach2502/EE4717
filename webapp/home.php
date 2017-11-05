@@ -48,6 +48,11 @@
                 </div>
             </div>
 
+            <div class="inputbar">
+                <input id="search-input" type="text" placeholder="Seach for food">
+                <button id="search-btn"><div> &#9906;</div></button>
+            </div>
+
 
 
         </div>
