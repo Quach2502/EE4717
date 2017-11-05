@@ -191,7 +191,8 @@
 
         .food-info:hover{
             border-style: solid;
-            border-color: red;
+            border-color: darkgray;
+            border-width: medium;
         }
         .img-thumbnail{
             /*width: 280px;*/
@@ -218,7 +219,7 @@
             top: 0;
             right: 0;
             height: 50px;
-            background: #fff;
+            background: #dcd4d9;
             font-weight: 500;
             font-size: 1.4rem;
             color: #333;
