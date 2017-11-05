@@ -1,28 +1,3 @@
-<?php
-@$db = new mysqli('localhost','root','11111111','ee4717');
-if(mysqli_connect_errno()){
-	echo 'error';
-	exit;
-}
-$description ='Description here';
-$foodName = 'Name here';
-$price = 'Price here';
-$imageLink = '../pics/error.png';
-$restaurant = 'Restaurant here';
-if(isset($_POST['foodid'])){
-	$foodId = $_POST['foodid'];
-	$query = "SELECT * FROM `food` WHERE `foodid` = \"".$foodId."\"";
-	$result = $db->query($query);
-	while($row = mysqli_fetch_array($result)) {
-		$desciption =  $row['description'];
-		$foodName =  $row['foodname'];
-		$imageLink =  "../asset/" .$row['imagelink'];
-		$restaurant = $row['restaurant'];}
-}
-
-
-
-echo '
 <!DOCTYPE html>
 <html lang = "en">
 <head>
@@ -57,6 +32,19 @@ echo '
 		height:70%;
 		background-color: rgb(245,245,220);
 	}
+	nav {
+		text-align: center;
+		background: rgba(10, 14, 21, 0.58); 
+	}
+
+	nav a {
+		display: inline-block;
+		padding: 15px 20px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: white;
+	}
 
 	header{
 		background-color: rgb(210,180,140); 	
@@ -68,42 +56,93 @@ echo '
 <body>
 	<div class = "wrapper">  
 		<header>
-			<h1>Nav Bar</h1>
+			<nav class="display">
+				<a href="#food">Food</a>
+				<a href="#search">Search</a>
+				<a href="#about">About us</a>
+				<a href="#feedback">Feedback</a>
+				<a href="#account">My Account</a>
+				<a href="#login">Login</a>
+				<a href="cart.php">Cart</a>
+			</nav>
 		</header>
-		<div id ="leftcolumn">
-			<img id ="food_image" src = '.$imageLink.'>
-		</div>
-		<div id = "rightcolumn">
-			<div id = "food_name">
-				'.$foodName.'
-			</div>
-			<div id = "food_description">
-				'.$description.'
-			</div>
-			<div id = "food_price" value = '.$price.'>
-				'.$price.'
-			</div>
-			<button type="button" id ="order_init">Order Now!</button><br>
-			<div id="getQuantity" style="display:none;">
-				<table>
-					<tr>		
-						<td>
-							<input id="quantity" type="number" value="0" style="width:30%;">
-						</td>
-						<td>
-							<button type="button" id ="add_to_cart">Add To Cart</button>
-						</td>
-					</tr>
-					<tr>
-						<td><input id="subtotal" type="text" value="0" style="width:30%;"></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+		<?php
+		function __autoload($class_name) {
+			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
+		}
+		include "dbconnect.php";
 
+		
+		$description ='Description here';
+		$foodName = 'Name here';
+		$price = 'Price here';
+		$imageLink = '../asset/error.jpg';
+		$restaurant = 'Restaurant here';
+		$category = 'Category here';
+		if(isset($_POST['add_to_cart'])){
+			session_start();
+			if(!isset($_SESSION['cart'])){
+				$_SESSION['cart'] = array();
+			}
+			$subtotal = $_POST['subtotal'];
+			$quantity = $_POST['quantity'];
+			$foodId = $_POST['foodid'];
+			$name = $_POST['foodname'];
+			if (isset($_SESSION['cart'][$foodId]) ||array_key_exists($foodId,$_SESSION['cart'])){
+				$_SESSION['cart'][$foodId]->quantity += $quantity;
+				$_SESSION['cart'][$foodId]->subtotal += $subtotal;
+			}
+			else{
+				$infoCartItem = new InfoCartItem();
+				$infoCartItem->quantity = $quantity;
+				$infoCartItem->subtotal = $subtotal;
+				$infoCartItem->name = $name;
+				$_SESSION['cart'][$foodId] = $infoCartItem;
+			}
+		}
+		if(isset($_POST['foodid'])){
+			$foodId = $_POST['foodid'];
+			$query = "SELECT * FROM `food` WHERE `foodid` = \"".$foodId."\"";
+			// $query = "SELECT * FROM `food`";
+			$result = $db->query($query);
+			while($row = mysqli_fetch_array($result)) {
+				$description =  $row['description'];
+				$foodName =  $row['name'];
+				$imageLink =  "../asset/" .$row['imagelink'];
+				$restaurant = $row['restaurant'];
+				$category = $row['category'];
+				$price = $row['price'];
+
+			}
+		}
+		echo '<div id ="leftcolumn">';
+		echo "<img id ='food_image' src = ".$imageLink."></div>";
+		echo '<div id = "rightcolumn">';
+		echo '<div id = "food_name">'.$foodName.'</div>';
+		echo '<div id = "food_category">'.$category.'</div>';
+		echo '<div id = "food_description">'.$description.'</div>';
+		echo '<div id = "food_price" value="'.$price.'">'.$price.'</div>';
+
+		echo '<button type="button" id ="order_init">Order Now!</button><br>';
+		echo '<form  id = "add_to_cart_form" method ="post" action="food_info.php">';
+		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';
+		echo	'<input name="foodname" type="hidden" value='.$foodName.'>';?>
+		<div id="getQuantity" style="display:none;">
+			<table>
+				<tr>	
+					<td>
+						<input id="quantity" name="quantity" type="number" value="0" style="width:30%;">
+					</td>
+					<td>
+						<input type="submit" id ="add_to_cart" name ="add_to_cart" value ="Add To Cart" >
+					</td>
+				</tr>
+				<tr>
+					<td><input id="subtotal" name="subtotal" type="text" value="0" style="width:30%;"></td>
+				</tr>
+			</table>
+		</div>
+	</form>
+</div>
 </body>
 </html>
-'
-
-?>

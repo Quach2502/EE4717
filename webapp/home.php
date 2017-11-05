@@ -384,29 +384,26 @@
         <section id = "food-thumbnail">
         <?php
 
-            @$db = new mysqli('localhost', 'root', 11111111, ee4717);
-            if (mysqli_connect_errno()){
-                echo 'cannot connect to database';
-                exit;
-            }
+        include "dbconnect.php";
 
-            $imageId ="";
-            $imageName="";
-            $imageLink = "";
-            $imageDescription = "";
+        $imageId ="";
+        $imageName="";
+        $imageLink = "";
+        $imageDescription = "";
 
-            $query = "select * from food";
-            $result = $db->query($query);
-            $num_result = $result->num_rows;
-    //        echo $num_result;
+        $query = "SELECT * FROM `food`";
+        $result = $db->query($query);
+        if(isset($result)){
+            $num_result = mysqli_num_rows($result);
+        }
+        // echo $num_result;
 
-            for ($i=0; $i<$num_result; $i++){
-
-                $row = $result->fetch_assoc();
-                $foodId = $row['foodid'];
-                $foodName = $row['name'];
-                $imageLink = "../asset/" . $row['imagelink'];
-                $foodPrice = $row['price'];
+        for ($i=0; $i<$num_result; $i++){
+            $row = $result->fetch_assoc();
+            $foodId = $row['foodid'];
+            $foodName = $row['name'];
+            $imageLink = "../asset/" . $row['imagelink'];
+            $foodPrice = $row['price'];
 
 //                $backgroundImageCSS = "url('".$imageLink."');";
 //                echo $backgroundImageCSS;
