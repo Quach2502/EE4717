@@ -186,14 +186,67 @@
         }
         .food-info{
             position: relative;
+            margin: 20px;
+        }
+
+        .food-info:hover{
+            border-style: solid;
+            border-color: red;
         }
         .img-thumbnail{
-            width: 280px;
-            height: 210px;
-            overflow: hidden;
+            /*width: 280px;*/
+            /*height: 210px;*/
+            /*overflow: hidden;*/
+            background-image: url('../asset/error.png');
+            background-repeat: no-repeat;
+            background-position:center;
+            background-size: cover;
+            text-align: left;
+            /*display: table;*/
+            /*width: 100%;*/
+            height: 250px;
+            max-height: 300px;
+            position:relative;
+
+            /*transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94),opacity 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94),-webkit-transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);*/
 
         }
 
+        .badge-info {
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            right: 0;
+            height: 50px;
+            background: #fff;
+            font-weight: 500;
+            font-size: 1.4rem;
+            color: #333;
+            padding: 8px 12px;
+        }
+        .badge-info .label{
+            text-align: center;
+            font-size: .8rem;
+            line-height: 1em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .tag {
+            color: #fff;
+            background-color: #d70f64;
+            height: 24px;
+            padding: 0 16px;
+            position: absolute;
+            z-index: 3;
+            top: 16px;
+            left: 0;
+            line-height: 24px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: block;
+        }
         .img-slider{
             width: 25%;
             height: auto;
@@ -346,15 +399,21 @@
                 $foodName = $row['name'];
                 $imageLink = "../asset/" . $row['imagelink'];
                 $foodPrice = $row['price'];
+
+//                $backgroundImageCSS = "url('".$imageLink."');";
+//                echo $backgroundImageCSS;
                 if ($i % 5 == 0){
                     echo"<div class='row'>";
                 }
 
                 echo "<div class='col five-col'> ";
                     echo "<form action='food_info.php' method='post'>";
-                        echo "<div class='food-info content-centered'>";
+                        echo "<div class='food-info'>";
                             echo "<input name='foodid' value='$foodId' hidden>";
-                            echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
+//                            echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
+                            echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
+                            echo "<span class='tag'>Promoted</span>";
+                            echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\"></div>";
                             echo "<h3> Food Name: ".$foodName."</h3>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
                             echo "<h1> Price: SGD $".$foodPrice."</h1>";
