@@ -2,7 +2,7 @@
  * Created by long on 2/11/17.
  */
 slideIndex = 1;
-numOfImage = 5;
+numOfImage = 4;
 
 showSlides(slideIndex);
 

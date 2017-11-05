@@ -82,7 +82,7 @@
 
         /* Slideshow container */
         .slideshow-container {
-            max-width: 500px;
+            max-width: 100%;
             position: relative;
             margin: auto;
         }
@@ -124,16 +124,16 @@
             text-align: center;
         }
 
-        .dot {
-            cursor:pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
+        /*.dot {*/
+            /*cursor:pointer;*/
+            /*height: 15px;*/
+            /*width: 15px;*/
+            /*margin: 0 2px;*/
+            /*background-color: #bbb;*/
+            /*border-radius: 50%;*/
+            /*display: inline-block;*/
+            /*transition: background-color 0.6s ease;*/
+        /*}*/
 
         .active, .dot:hover {
             background-color: #717171;
@@ -164,21 +164,29 @@
 
         }
 
-        .five-column{
+        .col{
             float: left;
             overflow: hidden;
-            width: 19%;
-            display: table-cell;
+            /*display: table-cell;*/
             vertical-align: middle;
             text-align: center;
         }
-
-        .five-column::after{
-            clear:both;
-            content: "";
-            display: table;
+        .five-col {
+            width: 20%;
         }
 
+        .four-col {
+            width: 25%;
+        }
+
+        .col:after, .col:before{
+            clear:both;
+            content: "";
+            /*display: table;*/
+        }
+        .food-info{
+            position: relative;
+        }
         .img-thumbnail{
             width: 280px;
             height: 210px;
@@ -186,14 +194,39 @@
 
         }
 
-        .content-centered{
+        .img-slider{
+            width: 25%;
+            height: auto;
+            overflow: hidden;
+        }
+
+        .content-centered {
             margin: auto;
             display: inline-block;
         }
 
-        img+h2{
+
+        .five-col h3{
+            text-align: left;
+            margin: 0px;
+            color: red;
+            text-transform: uppercase;
+        }
+
+        .five-col h1{
+            text-align: left;
+            color: orange;
             margin: 0px;
         }
+
+        .five-col button{
+            color: orange;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+
+
     </style>
 </head>
 <body>
@@ -224,53 +257,53 @@
 
         <section id="slider">
             <div class = "slideshow-container">
-                <div class = "myslider fade five-column ">
-                    <img src = "../asset/image1.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src = "../asset/image1.jpg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 1</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src = "../asset/image2.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src = "../asset/image2.jpg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 2</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src = "../asset/image3.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src = "../asset/image3.jpg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 3</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image4.jpeg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image4.jpeg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 4</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image5.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image5.jpg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 5</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image6.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image6.jpg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 6</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image7.jpeg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image7.jpeg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 7</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image8.jpg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image8.jpg" style="width: 100%" class = "img-slider" >
                     <div class ="caption">Caption 7</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image9.jpeg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image9.jpeg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 7</div>
                 </div>
 
-                <div class = "myslider fade five-column ">
-                    <img src="../asset/image10.jpeg" style="width: 100%">
+                <div class = "myslider fade col four-col ">
+                    <img src="../asset/image10.jpeg" style="width: 100%" class = "img-slider">
                     <div class ="caption">Caption 7</div>
                 </div>
 
@@ -279,12 +312,12 @@
                 <a class="next" onclick="sliderPlus(1)">&#10095;</a>
             </div>
 
-
-            <div style="text-align:center">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
+<!---->
+<!--            <div style="text-align:center">-->
+<!--                <span class="dot" onclick="currentSlide(1)"></span>-->
+<!--                <span class="dot" onclick="currentSlide(2)"></span>-->
+<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
+<!--            </div>-->
         </section>
 
         <section id = "food-thumbnail">
@@ -317,14 +350,15 @@
                     echo"<div class='row'>";
                 }
 
-                echo "<div class='five-column'> ";
+                echo "<div class='col five-col'> ";
                     echo "<form action='food_info.php' method='post'>";
-                        echo "<div class='content-centered'>";
+                        echo "<div class='food-info content-centered'>";
                             echo "<input name='foodid' value='$foodId' hidden>";
                             echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
-                            echo "<h2> Food Name: ".$foodName."</h2>";
+                            echo "<h3> Food Name: ".$foodName."</h3>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
-                            echo "<p> Price: SGD $".$foodPrice."</p>";
+                            echo "<h1> Price: SGD $".$foodPrice."</h1>";
+                            echo "<button>Order now! </button>";
                         echo "</div>";
                     echo "</form>";
                 echo "</div>";
