@@ -12,14 +12,45 @@
 <body>
 <!--    Navigation bar -->
 <header id="">
-    <nav class="display">
-        <a href="#food">Food</a>
-        <a href="#search">Search</a>
-        <a href="#about">About us</a>
-        <a href="#feedback">Feedback</a>
-        <a href="#account">My Account</a>
-        <a href="#login">Login</a>
-        <a href="cart.php">Cart</a>
+    <nav>
+        <div class = "logo">
+
+        </div>
+
+        <div class = "pagelink">
+            <a href="#food">Food</a>
+            <a href="#search">Search</a>
+            <a href="#about">About us</a>
+            <a href="#feedback">Feedback</a>
+            <a href="#account">My Account</a>
+            <a href="#login">Login</a>
+            <a href="cart.php">Cart</a>
+        </div>
+
+        <div class = "searchbar">
+            <div class="dropdown">
+                <button id="search-category-btn" class = "dropdown-btn" onclick="showSearchCategories()">
+                    All categories<span>&#9660;</span>
+                </button>
+                <div id="search-category-content" class = "dropdown-content">
+                    <span onclick="updateSearchCategory(this.innerText)">Restaurant</span>
+                    <span onclick="updateSearchCategory(this.innerText)">Category</span>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button id="search-item-btn" class = "dropdown-btn" onclick="showSearchItems()">
+                    All items<span>&#9660;</span>
+                </button>
+                <div id ="search-item-content" class = "dropdown-content" >
+                    <span onclick="updateSearchItem(this.innerText)">KFC</span>
+                    <span onclick="updateSearchItem(this.innerText)">MC'Donalds</span>
+                </div>
+            </div>
+
+
+
+        </div>
     </nav>
 </header>
 <main>
@@ -48,7 +79,7 @@
 
                         echo "<div class = 'myslider fade col four-col'>";
                             echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\">";
-                                    echo "<div class ='caption'>Caption 1</div>";
+                                    echo "<div class ='caption'>".$foodName."</div>";
                             echo "</div>";
                         echo "</div>";
 
@@ -110,5 +141,6 @@
 </main>
 <script src="../js/initHomePage.js"></script>
 <script src="../js/slider.js"></script>
+<script src="../js/searchbar.js"></script>
 </body>
 </html>
