@@ -62,9 +62,14 @@
 			<a href="#search">Search</a>
 			<a href="#about">About us</a>
 			<a href="#feedback">Feedback</a>
-			<a href="#account">My Account</a>
-			<a href="#login">Login</a>
-			<a href="cart.php">Cart</a>
+			<?php
+			if(isset($_SESSION['valid_user'])){
+				echo "<a href='#'>Welcome, {$_SESSION['valid_user']}</a>";
+				echo '<a href="cart.php">My Cart</a>';
+			}else{    
+				echo "<a href='login.php'>Login</a>";
+			}
+			?>
 		</nav>
 
 		<div class = "content-wrap">
