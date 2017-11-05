@@ -93,7 +93,7 @@
 				echo "<a href='registration.html'>Register again.</a>";
 			}
 			else{
-				echo "Sucessfully.<br>";
+				echo "Sucessfully. You can try log in now<br>";
 				echo "<a href='home.php'>Go back to home page.</a>";
 			}
 			?>
