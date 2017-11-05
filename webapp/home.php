@@ -249,9 +249,16 @@
             display: block;
         }
         .img-slider{
-            width: 25%;
-            height: auto;
             overflow: hidden;
+            background-image: url('../asset/theme.jpg');
+            background-repeat: no-repeat;
+            background-position:center;
+            background-size: cover;
+            text-align: left;
+            /*display: table;*/
+            /*width: 100%;*/
+            height: 300px;
+            position:relative;
         }
 
         .content-centered {
