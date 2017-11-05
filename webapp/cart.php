@@ -63,9 +63,13 @@
 			<a href="#about">About us</a>
 			<a href="#feedback">Feedback</a>
 			<?php
+			if(!isset($_SESSION)){
+				session_start();
+			}
 			if(isset($_SESSION['valid_user'])){
-				echo "<a href='#'>Welcome, {$_SESSION['valid_user']}</a>";
+				echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
 				echo '<a href="cart.php">My Cart</a>';
+				echo '<a href="logout.php">Logout</a>';
 			}else{    
 				echo "<a href='login.php'>Login</a>";
 			}
@@ -81,11 +85,10 @@
          * Time: 4:30 PM
          */
         function __autoload($class_name) {
-        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
+        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
         }
 
         include "dbconnect.php";
-        session_start();
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
         }

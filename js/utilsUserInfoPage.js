@@ -1,14 +1,32 @@
 var validateInformation = {
 	fullname : false,
 	email : false,
-	username : false,
-	psw : false,
 	handphone:false,
-	exist:false,
+	pendpsw:false,
+	newpsw:false,
 	validAll : function(){
-		return (this.handphone&&this.fullname&&this.email&&this.username&&this.psw&&this.psw);
+		return (this.handphone&&this.fullname&&this.email);
 	}
 };
+
+function showInfo(event){
+	document.getElementById('change_psw').style.display = "none";
+	document.getElementById('info').style.display = "inline";
+	document.getElementById('order_history').style.display = "none";
+}
+
+function showOrderHistory(event){
+	document.getElementById('change_psw').style.display = "none";
+	document.getElementById('info').style.display = "none";
+	document.getElementById('order_history').style.display = "inline";
+}
+
+function showChangePsw(event){
+	document.getElementById('change_psw').style.display = "inline";
+	document.getElementById('info').style.display = "none";
+	document.getElementById('order_history').style.display = "none";
+}
+
 
 function fullnameValidate(event) {
 	var nameRegex = /^([A-Za-z]+\s?)+$/;
@@ -38,21 +56,19 @@ function handphoneValidate(event) {
 	}
 }
 
-function pswValidate(event) {
+function newpswValidate(event) {
 	var psw = event.currentTarget.value.strip();
 	if(psw.length >= 5){
-		validateInformation.psw = true;
+		validateInformation.newpsw = true;
 		document.getElementById("errorPsw").style.display = 'none';
 
 	}
 	else{
 		event.currentTarget.select();
-		validateInformation.psw = false;
+		validateInformation.newpsw = false;
 		document.getElementById("errorPsw").style.display = 'inline';
 	}
 }
-
-
 
 function emailValidate(event){
 	var email = event.currentTarget.value;
@@ -80,50 +96,6 @@ function emailValidate(event){
 		document.getElementById("errorEmail").style.display = 'inline';
 	}
 }
-function usernameValidate(event){
-	var usernameValue = event.currentTarget.value;
-	if(usernameValue.length >= 5){
-		validateInformation.username = true;
-		document.getElementById("errorUsername").style.display = 'none';
-
-	}
-	else{
-		event.currentTarget.select();
-		validateInformation.username = false;
-		document.getElementById("errorUsername").style.display = 'inline';
-	}
-}
-
-function checkUsername(event){
-	var usernameValue = event.currentTarget.value;
-	// Get the username entered
-	var xhr = null;
-	if (window.XMLHttpRequest) {
-		xhr = new XMLHttpRequest();
-	} else {
-		xhr = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xhr.onreadystatechange = function() {
-		if (this.readyState == 4) {
-			if(this.status == 200){
-				var json = JSON.parse(xhr.responseText);
-				if (json.exists) {
-					validateInformation.exist = false;
-					document.getElementById("errorExists").style.display = 'inline';
-				}
-				else{
-					validateInformation.exist = true;
-					document.getElementById("errorExists").style.display = 'none';
-				}
-			}
-			else{
-				alert('Error: '+xhr.status);
-			}
-		}
-	};
-	xhr.open('GET', './check_username.php?username=' + usernameValue, true);
-	xhr.send();	
-}
 
 function userNameValidate(userName){
 	var userNameRegex = /^[\w.-]*$/;
@@ -136,26 +108,73 @@ function domainNameValidate(domainName){
 
 }
 
-function formValidate(){
+function formInfoValidate(){
 	flag = validateInformation.validAll();
 	if (flag)
 	{
-		var psw = document.getElementById("psw").value;
-		var pswrepeat = document.getElementById("psw-repeat").value;
-		if (psw != pswrepeat)
-		{	
-			alert('The password does not match.')
-			return false;
-		}
-		if (!validateInformation.exist)
-		{	
-			alert('Please check for unique username first')
-			return false;
-		}
 		return true;
 	}
 	else{
 		alert("Invalid form!");
 		return false;
-	}	
+	}
+	
+	
+}
+
+function checkPendingPsw(){
+	var pendpswValue = event.currentTarget.value;
+	var usernameValue = document.getElementById('username').value;
+	var xhr = null;
+	if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest();
+	} else {
+		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhr.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			if(this.status == 200){
+				var json = JSON.parse(xhr.responseText);
+				if (json.exists) {
+					validateInformation.pendpsw = true;
+				}
+				else{
+					validateInformation.pendpsw = false;
+				}
+			}
+			else{
+				alert('Error: '+xhr.status);
+			}
+		}
+	};
+	xhr.open('GET', './check_pendpsw.php?pendpsw=' + pendpswValue+'&username='+usernameValue, true);
+	xhr.send();	
+}
+
+function formPswValidate(){
+	flag = validateInformation.newpsw;
+	var newpsw = document.getElementById('newpsw').value;
+	var newpswrepeat = document.getElementById('newpsw-repeat').value;
+	if (validateInformation.pendpsw)
+	{
+		if(validateInformation.newpsw){
+			if(newpswrepeat===newpsw){
+				return true;
+			}
+			else{
+				alert("Your new password does not match.");
+				return false;
+			}
+		}
+		else
+		{
+			alert("Invalid new password (at least 5 characters)");
+			return false;
+		}
+	}
+	else{
+		alert("Your current password is wrong!");
+		return false;
+	}
+
 }

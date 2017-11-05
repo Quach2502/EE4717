@@ -20,5 +20,4 @@ else{
 	$_SESSION['valid_user'] = $username;
 	header("location:home.php");
 }
-// echo json_encode(array('exists' => $exists));
 ?>

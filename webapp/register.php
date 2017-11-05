@@ -62,9 +62,18 @@
 			<a href="#search">Search</a>
 			<a href="#about">About us</a>
 			<a href="#feedback">Feedback</a>
-			<a href="#account">My Account</a>
-			<a href="#login">Login</a>
-			<a href="cart.php">Cart</a>
+			<?php
+			if(!isset($_SESSION)){
+				session_start();
+			}
+			if(isset($_SESSION['valid_user'])){
+				echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
+				echo '<a href="cart.php">My Cart</a>';
+				echo '<a href="logout.php">Logout</a>';
+			}else{    
+				echo "<a href='login.php'>Login</a>";
+			}
+			?>
 		</nav>
 
 		<div class = "content-wrap">
@@ -93,7 +102,7 @@
 				echo "<a href='registration.html'>Register again.</a>";
 			}
 			else{
-				echo "Sucessfully. You can try log in now<br>";
+				echo "Sucessfully. You can <a href='login.php'>log in </a>now<br>";
 				echo "<a href='home.php'>Go back to home page.</a>";
 			}
 			?>
