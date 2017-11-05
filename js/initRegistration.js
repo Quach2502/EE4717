@@ -5,7 +5,7 @@ function init(){
 		document.getElementById('email').addEventListener("change",emailValidate,false);
 		document.getElementById('handphone').addEventListener("change",handphoneValidate,false);
 		document.getElementById('psw').addEventListener("change",pswValidate,false);
-		// document.getElementById('register-form').addEventListener("submit",formValidate,false);
+		document.getElementById('username').addEventListener("blur",checkUsername,false);
 	}
 }
 window.onload = init;

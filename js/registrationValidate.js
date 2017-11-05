@@ -4,6 +4,7 @@ var validateInformation = {
 	username : false,
 	psw : false,
 	handphone:false,
+	exist:false,
 	validAll : function(){
 		return (this.handphone&&this.fullname&&this.email&&this.username&&this.psw&&this.psw);
 	}
@@ -79,7 +80,7 @@ function emailValidate(event){
 		document.getElementById("errorEmail").style.display = 'inline';
 	}
 }
-function usernameValidate(userName){
+function usernameValidate(event){
 	var usernameValue = event.currentTarget.value;
 	if(usernameValue.length >= 5){
 		validateInformation.username = true;
@@ -93,6 +94,36 @@ function usernameValidate(userName){
 	}
 }
 
+function checkUsername(event){
+	var usernameValue = event.currentTarget.value;
+	// Get the username entered
+	var xhr = null;
+	if (window.XMLHttpRequest) {
+		xhr = new XMLHttpRequest();
+	} else {
+		xhr = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xhr.onreadystatechange = function() {
+		if (this.readyState == 4) {
+			if(this.status == 200){
+				var json = JSON.parse(xhr.responseText);
+				if (json.exists) {
+					validateInformation.exist = false;
+					document.getElementById("errorExists").style.display = 'inline';
+				}
+				else{
+					validateInformation.exist = true;
+					document.getElementById("errorExists").style.display = 'none';
+				}
+			}
+			else{
+				alert('Error: '+xhr.status);
+			}
+		}
+	};
+	xhr.open('GET', './check_username.php?username=' + usernameValue, true);
+	xhr.send();	
+}
 
 function userNameValidate(userName){
 	var userNameRegex = /^[\w.-]*$/;
@@ -114,6 +145,11 @@ function formValidate(){
 		if (psw != pswrepeat)
 		{	
 			alert('The password does not match.')
+			return false;
+		}
+		if (!validateInformation.exist)
+		{	
+			alert('Please check for unique username first')
 			return false;
 		}
 		return true;
