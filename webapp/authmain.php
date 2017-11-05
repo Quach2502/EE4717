@@ -1,5 +1,6 @@
 <?php
 include "dbconnect.php";
+session_start();
 $username = isset($_POST['username']) ? $_POST['username'] : '';
 $username = mysqli_real_escape_string($db,$username);
 $psw = isset($_POST['psw']) ? $_POST['psw'] : '';
@@ -16,7 +17,8 @@ if(!$exists){
 	die(header("location:login.php?loginFailed=true;"));
 }
 else{
-	echo "successfully.";
+	$_SESSION['valid_user'] = $username;
+	header("location:home.php");
 }
 // echo json_encode(array('exists' => $exists));
 ?>

@@ -63,7 +63,14 @@
         <a href="#about">About us</a>
         <a href="#feedback">Feedback</a>
         <a href="#account">My Account</a>
-        <a href="#login">Login</a>
+        <?php
+        session_start();
+        if(isset($_SESSION['valid_user'])){
+            echo "<a href='#'>Welcome, {$_SESSION['valid_user']}</a>";
+        }else{    
+            echo "<a href='login.php'>Login</a>";
+        }
+        ?>
         <a href="cart.php">Cart</a>
     </nav>
 
