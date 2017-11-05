@@ -69,18 +69,8 @@
 
     <div class = "content-wrap">
         <?php
-        /**
-         * Created by IntelliJ IDEA.
-         * User: long
-         * Date: 30/10/17
-         * Time: 4:30 PM
-         */
 
-        @$db = new mysqli('localhost', 'f36ee','f36ee' , 'f36ee');
-        if (mysqli_connect_errno()){
-            echo 'cannot connect to database';
-            exit;
-        }
+        include "dbconnect.php";
 
         $imageId ="";
         $imageName="";
