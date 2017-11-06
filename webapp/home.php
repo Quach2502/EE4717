@@ -12,79 +12,11 @@
 <body>
 <!--    Navigation bar -->
 <header id="">
-
-    <nav>
-        <div class = "logo">
-
-        </div>
-
-        <div class = "pagelink">
-            <a href="#food">Food</a>
-            <a href="#search">Search</a>
-            <a href="#about">About us</a>
-            <a href="#feedback">Feedback</a>
-            <a href="#account">My Account</a>
-            <a href="#login">Login</a>
-            <a href="cart.php">Cart</a>
-        </div>
-
-        <div class = "searchbar">
-            <div class="dropdown">
-                <button id="search-category-btn" class = "dropdown-btn" onclick="showSearchCategories()">
-                    All categories<span>&#9660;</span>
-                </button>
-                <div id="search-category-content" class = "dropdown-content">
-                    <?php
-                        include "food_query.php";
-                        $searchCategories = array('restaurant'=>'Restaurant', 'category'=>'Food Category');
-
-                        foreach ($searchCategories as $searchCategory =>$searchCategory_name){
-                            echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory_name."</span>";
-                        }
-
-                    ?>
-<!--                    <span onclick="updateSearchCategory(this.innerText)">Restaurant</span>-->
-<!--                    <span onclick="updateSearchCategory(this.innerText)">Category</span>-->
-                </div>
-            </div>
-
-            <div class="dropdown">
-                <button id="search-item-btn" class = "dropdown-btn" onclick="showSearchItems()">
-                    All items<span>&#9660;</span>
-                </button>
-                <div id ="search-item-content" class = "dropdown-content" >
-                    <?php
-                    include "food_query.php";
-                    $searchItems = array();
-
-//
-//                        for ($i=0; $i<$num_result; $i++){
-//                            $row = $result->fetch_assoc();
-//                            $item = $row[$searchCategory];
-//                            if (!in_array($item, $searchItem)){
-//                                array_push($searchCategories, $category);
-//                            }
-//                        }
-//                        echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory."</span>";
-//                    }
-
-                    ?>
-
-<!--                    <span onclick="updateSearchItem(this.innerText)">KFC</span>-->
-<!--                    <span onclick="updateSearchItem(this.innerText)">MC'Donalds</span>-->
-                </div>
-            </div>
-
-            <div class="inputbar">
-                <input id="search-input" type="text" placeholder="Seach for food">
-                <button id="search-btn"><div> &#9906;</div></button>
-            </div>
+    <?php
+        include "templates/navbar.php";
+    ?>
 
 
-
-        </div>
-
-    </nav>
 </header>
 <main>
     <div class = "content-wrap">
@@ -102,7 +34,7 @@
         <section id="slider">
             <div class = "slideshow-container">
                 <?php
-                    include "food_query.php";
+                    include "functions/food_query.php";
                     for ($i=0; $i<$num_result; $i++) {
                         $row = $result->fetch_assoc();
                         $foodId = $row['foodid'];
@@ -133,7 +65,7 @@
         <section id = "food-thumbnail">
         <?php
 
-        include "food_query.php";
+        include "functions/food_query.php";
 
         for ($i=0; $i<$num_result; $i++){
             $row = $result->fetch_assoc();
