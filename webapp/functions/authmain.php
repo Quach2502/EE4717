@@ -14,7 +14,7 @@ if ($row = mysqli_fetch_assoc($result)) {
 	$exists = $row['user_found'] ? true : false;
 }
 if(!$exists){
-	die(header("location:login.php?loginFailed=true;"));
+	die(header("location:../login.php?loginFailed=true;"));
 }
 else{
 	$_SESSION['valid_user'] = $username;

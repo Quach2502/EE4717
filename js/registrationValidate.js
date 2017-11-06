@@ -6,7 +6,7 @@ var validateInformation = {
 	handphone:false,
 	exist:false,
 	validAll : function(){
-		return (this.handphone&&this.fullname&&this.email&&this.username&&this.psw&&this.psw);
+		return (this.handphone&&this.fullname&&this.email&&this.username&&this.psw);
 	}
 };
 

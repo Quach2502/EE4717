@@ -91,7 +91,6 @@
 			$fullname =  $row['fullname'];
 			$handphone =  $row['handphone'];
 			$address =  $row['address'];
-			$psw = $row['password'];
 		}
 		$sql = "SELECT * FROM `orderhistory` WHERE `username` = '{$username}'";
 		$num_result = 0;
