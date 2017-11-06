@@ -7,7 +7,10 @@ function showSearchCategories() {
 }
 
 function showSearchItems(){
-    document.getElementById("search-item-content").classList.toggle("show");
+    if (!(document.getElementById("search-category-btn").innerText == 'All categories')){
+        document.getElementById("search-item-content").classList.toggle("show");
+    }
+
 }
 
 // clear the dropdown
@@ -26,8 +29,22 @@ window.onclick = function(event) {
 
 function updateSearchCategory(val) {
     document.getElementById("search-category-btn").innerText = val;
+
 }
 
 function updateSearchItem(val){
     document.getElementById("search-item-btn").innerText = val;
+}
+
+function updateServerSession(session_index, value){
+    var xhttp= new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML = this.responseText;
+        }
+    };
+
+    xhttp.open("GET", "update_ajax?index" + session_index+"&value="+value, true);
+    xhttp.send();
+
 }

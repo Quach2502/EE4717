@@ -33,8 +33,17 @@
                     All categories<span>&#9660;</span>
                 </button>
                 <div id="search-category-content" class = "dropdown-content">
-                    <span onclick="updateSearchCategory(this.innerText)">Restaurant</span>
-                    <span onclick="updateSearchCategory(this.innerText)">Category</span>
+                    <?php
+                        include "food_query.php";
+                        $searchCategories = array('restaurant'=>'Restaurant', 'category'=>'Food Category');
+
+                        foreach ($searchCategories as $searchCategory =>$searchCategory_name){
+                            echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory_name."</span>";
+                        }
+
+                    ?>
+<!--                    <span onclick="updateSearchCategory(this.innerText)">Restaurant</span>-->
+<!--                    <span onclick="updateSearchCategory(this.innerText)">Category</span>-->
                 </div>
             </div>
 
@@ -43,8 +52,25 @@
                     All items<span>&#9660;</span>
                 </button>
                 <div id ="search-item-content" class = "dropdown-content" >
-                    <span onclick="updateSearchItem(this.innerText)">KFC</span>
-                    <span onclick="updateSearchItem(this.innerText)">MC'Donalds</span>
+                    <?php
+                    include "food_query.php";
+                    $searchItems = array();
+
+
+                        for ($i=0; $i<$num_result; $i++){
+                            $row = $result->fetch_assoc();
+                            $item = $row[$searchCategory];
+                            if (!in_array($item, $searchItem)){
+                                array_push($searchCategories, $category);
+                            }
+                        }
+                        echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory."</span>";
+                    }
+
+                    ?>
+
+<!--                    <span onclick="updateSearchItem(this.innerText)">KFC</span>-->
+<!--                    <span onclick="updateSearchItem(this.innerText)">MC'Donalds</span>-->
                 </div>
             </div>
 
