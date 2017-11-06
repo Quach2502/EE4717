@@ -14,3 +14,14 @@ function computeFoodPrice(event){
 function showQuantity(event){
 	document.getElementById('getQuantity').style.display = "inline";
 }
+
+function formValidate(){
+	var quantity = document.getElementById('quantity').value;
+	if(quantity > 0){
+		return true;
+	}
+	else{
+		alert("You should order more than 0 ^_^");
+		return false;
+	}
+}

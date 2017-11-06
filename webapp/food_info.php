@@ -130,7 +130,7 @@
 		echo '<div id = "food_price" value="'.$price.'">'.$price.'</div>';
 
 		echo '<button type="button" id ="order_init">Order Now!</button><br>';
-		echo '<form  id = "add_to_cart_form" method ="post" action="food_info.php">';
+		echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
 		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';
 		echo	'<input name="foodname" type="hidden" value='.$foodName.'>';?>
 		<div id="getQuantity" style="display:none;">
