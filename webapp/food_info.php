@@ -62,6 +62,7 @@
 				<a href="#about">About us</a>
 				<a href="#feedback">Feedback</a>
 				<?php
+				include "class/InfoCartItem.php";
 				session_start();
 				if(isset($_SESSION['valid_user'])){
 					echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
@@ -74,12 +75,7 @@
 			</nav>
 		</header>
 		<?php
-		function __autoload($class_name) {
-			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/webapp/class/'.$class_name . '.php');
-		}
-		include "dbconnect.php";
-
-		
+		include "./functions/dbconnect.php";		
 		$description ='Description here';
 		$foodName = 'Name here';
 		$price = 'Price here';

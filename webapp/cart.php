@@ -1,5 +1,7 @@
 <html>
 <head>
+	<script type="text/javascript" src = "../js/utilsCartPage.js"></script>
+	<script type ="text/javascript" src = "../js/initCartPage.js"></script>
 	<style>
 	html{
 		max_width: 90%;
@@ -23,7 +25,10 @@
 		/*max-width: 90%;*/
 		margin: 20px auto;
 	}
-
+	.error{
+		color: rgb(255,0,0);
+		display: none;
+	}
 	.five-column{
 		float: left;
 		overflow: hidden;
@@ -63,6 +68,7 @@
 			<a href="#about">About us</a>
 			<a href="#feedback">Feedback</a>
 			<?php
+			include "class/InfoCartItem.php";
 			if(!isset($_SESSION)){
 				session_start();
 			}
@@ -84,14 +90,23 @@
          * Date: 30/10/17
          * Time: 4:30 PM
          */
-        function __autoload($class_name) {
-        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/webapp/class/'.$class_name . '.php');
-        }
-
-        include "dbconnect.php";
+        include "./functions/dbconnect.php";
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
         }
+        if (!isset($_SESSION['valid_user'])){
+        	echo 'You have not logged in yet.';
+        	exit;
+        }
+        $username = $_SESSION['valid_user'];
+        $query = "SELECT * FROM `user` WHERE `username` = '{$username}'";
+		$result = $db->query($query);
+		while($row = mysqli_fetch_array($result)) {
+			$email =  $row['email'];
+			$fullname =  $row['fullname'];
+			$handphone =  $row['handphone'];
+			$address =  $row['address'];
+		}
         if(isset($_POST['delete_cart_item'])){
         	$item_to_delete = $_POST['delete_cart_item'];
         	// print_r($item_to_delete);
@@ -140,11 +155,46 @@
         	}
         	echo "</table>";
         	echo "<p>Total Price: ".$total."$<br>";
-        	echo "<button><a href='purchase.php'>Purchase Cart</a></button>";
+        	echo "<button type='button' id ='show_info_purchase'>Proceed to purchase</button>";
+
+
+        	echo "<div id = 'info_purchase' style='display:none;'>";
+        	echo '<form action="functions/update_orderhistory.php" method ="post" onSubmit ="return formValidate()">';
+        	echo 		'<table>';
+        	echo 			'<tr>';
+        	echo 				'<td>Fullname*</td>';
+        	echo 				'<td><input type="text" name ="fullname" id ="fullname" value="'.$fullname.'" required><input type="hidden" name="total_price" value ="'.$total.'"></td>';
+        	echo 				'<td><span class = "error" id ="errorName">Invalid!</span></td>';
+        	echo 			'</tr>';
+        	echo 			'<tr>';
+        	echo 				'<td>Preferred delivery date&time*</td>';
+        	echo 				'<td><input type="datetime-local" id ="date_time" name="date_time" required></td>';
+        	echo 				'<td><span class = "error" id ="errorDate">We cannot ship to the past ^^</span></td>';
+        	echo 			'</tr>';
+        	echo 			'<tr>';
+        	echo 				'<td>Handphone*</td>';
+        	echo 				'<td><input type="text" id ="handphone" name="handphone" value="'.$handphone.'" required></td>';
+        	echo 				'<td><span class = "error" id ="errorHandphone">Invalid!</span></td>';
+        	echo 			'</tr>';
+        	echo 			'<tr>';
+        	echo 				'<td>Address*</td>';
+        	echo 				'<td><input type="text" name="address" id ="address" value="'.$address.'" required></td>';
+        	echo 				'<td><span class = "error" id ="errorAddress">Invalid!</span></td>';
+        	echo 			'</tr>';
+        	echo 			'<tr>';
+        	echo 				'<td></td>';
+        	echo 				'<td><button type="submit" style="float:left;">Purchase</button></td>';
+        	echo 			'</tr>';
+        	echo 		'</table>';
+        	echo '</form>';
+        	echo '</div>';
 
         }
         else{
-        	echo"<p>Your cart is empty</p>";
+        	echo"<p>Your cart is empty</p></br>";
+        	if(isset($_GET['addOrderHistory'])){
+        		echo "You have ordered successfully. You can visit your <a href='user_info.php'>Order History</a> to check.";
+        	}
         }
 
        // echo $num_result;
