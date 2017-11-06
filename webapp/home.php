@@ -12,6 +12,7 @@
 <body>
 <!--    Navigation bar -->
 <header id="">
+
     <nav>
         <div class = "logo">
 
@@ -56,16 +57,16 @@
                     include "food_query.php";
                     $searchItems = array();
 
-
-                        for ($i=0; $i<$num_result; $i++){
-                            $row = $result->fetch_assoc();
-                            $item = $row[$searchCategory];
-                            if (!in_array($item, $searchItem)){
-                                array_push($searchCategories, $category);
-                            }
-                        }
-                        echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory."</span>";
-                    }
+//
+//                        for ($i=0; $i<$num_result; $i++){
+//                            $row = $result->fetch_assoc();
+//                            $item = $row[$searchCategory];
+//                            if (!in_array($item, $searchItem)){
+//                                array_push($searchCategories, $category);
+//                            }
+//                        }
+//                        echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory."</span>";
+//                    }
 
                     ?>
 
@@ -82,6 +83,7 @@
 
 
         </div>
+
     </nav>
 </header>
 <main>
