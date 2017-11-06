@@ -12,24 +12,11 @@
 <body>
 <!--    Navigation bar -->
 <header id="">
-    <nav class="display">
-        <a href="#food">Food</a>
-        <a href="#search">Search</a>
-        <a href="#about">About us</a>
-        <a href="#feedback">Feedback</a>
-        <?php
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        if(isset($_SESSION['valid_user'])){
-            echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
-            echo '<a href="cart.php">My Cart</a>';
-            echo '<a href="logout.php">Logout</a>';
-        }else{    
-            echo "<a href='login.php'>Login</a>";
-        }
-        ?>
-    </nav>
+    <?php
+        include "templates/navbar.php";
+    ?>
+
+
 </header>
 <main>
     <div class = "content-wrap">
@@ -47,7 +34,7 @@
         <section id="slider">
             <div class = "slideshow-container">
                 <?php
-                    include "food_query.php";
+                    include "functions/food_query.php";
                     for ($i=0; $i<$num_result; $i++) {
                         $row = $result->fetch_assoc();
                         $foodId = $row['foodid'];
@@ -57,7 +44,7 @@
 
                         echo "<div class = 'myslider fade col four-col'>";
                             echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\">";
-                                    echo "<div class ='caption'>Caption 1</div>";
+                                    echo "<div class ='caption'>".$foodName."</div>";
                             echo "</div>";
                         echo "</div>";
 
@@ -78,7 +65,7 @@
         <section id = "food-thumbnail">
         <?php
 
-        include "food_query.php";
+        include "functions/food_query.php";
 
         for ($i=0; $i<$num_result; $i++){
             $row = $result->fetch_assoc();
@@ -119,5 +106,6 @@
 </main>
 <script src="../js/initHomePage.js"></script>
 <script src="../js/slider.js"></script>
+<script src="../js/searchbar.js"></script>
 </body>
 </html>

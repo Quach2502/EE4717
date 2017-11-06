@@ -42,13 +42,13 @@
             <a href="#about">About us</a>
             <a href="#feedback">Feedback</a>
             <a href="#account">My Account</a>
-            <a href="#login">Login</a>
+            <a href="login.php">Login</a>
             <a href="cart.php">Cart</a>
         </nav>
 
         <div class = "content-wrap">
             <div class ="login-form">
-                <form action="./authmain.php" method="post">
+                <form action="functions/authmain.php" method="post">
                   <div class="imgcontainer">
                     <img src="../asset/avt.png" alt="Avatar" class="avatar" style="height:100%;width: 100%;">
                 </div>

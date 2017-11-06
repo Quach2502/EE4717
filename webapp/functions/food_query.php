@@ -6,10 +6,6 @@
  * Time: 8:50 PM
  */ include "dbconnect.php";
 
-$imageId ="";
-$imageName="";
-$imageLink = "";
-$imageDescription = "";
 
 $query = "SELECT * FROM `food`";
 $result = $db->query($query);

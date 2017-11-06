@@ -18,6 +18,6 @@ if(!$exists){
 }
 else{
 	$_SESSION['valid_user'] = $username;
-	header("location:home.php");
+	header("location: ../home.php");
 }
 ?>
