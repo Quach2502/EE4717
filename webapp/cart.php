@@ -63,8 +63,12 @@
 			<a href="#about">About us</a>
 			<a href="#feedback">Feedback</a>
 			<?php
+            include "class/InfoCartItem.php";
+            include "functions/dbconnect.php";
 			if(!isset($_SESSION)){
-				session_start();
+
+			    session_start();
+
 			}
 			if(isset($_SESSION['valid_user'])){
 				echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
@@ -84,11 +88,10 @@
          * Date: 30/10/17
          * Time: 4:30 PM
          */
-        function __autoload($class_name) {
-        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/webapp/class/'.$class_name . '.php');
-        }
+//        function __autoload($class_name) {
+//        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/webapp/class/'.$class_name . '.php');
+//        }
 
-        include "functions/dbconnect.php";
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
         }
@@ -99,6 +102,8 @@
         }
         // print_r($_SESSION['cart']);
         $num_items_cart = count($_SESSION['cart']);
+        echo $num_items_cart;
+        var_dump($_SESSION['cart']);
         if($num_items_cart > 0){
         	$total = 0;
         	echo "<table border = '0'><thead>

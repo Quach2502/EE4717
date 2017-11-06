@@ -1,3 +1,4 @@
+
 <nav>
     <div class = "logo">
 
@@ -39,10 +40,11 @@
                         'items'=>array())
                 );
 
-                foreach ($searchCategories as $searchCategory =>$searchCategory_arr){
-                    echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategories[$searchCategory]['name']."</span>";
 
-                    include "food_query.php";
+                foreach ($searchCategories as $searchCategory =>$searchCategory_arr){
+                    echo"<span onclick='updateSearchWithCategory(this.innerText)'  onMouseOver='showCategoryItems(this.innerText)'>".$searchCategories[$searchCategory]['name']."</span>";
+
+                    include "functions/food_query.php";
                     for ($i=0; $i<$num_result; $i++){
                         $row = $result->fetch_assoc();
                         $item = $row[$searchCategory];
@@ -53,44 +55,26 @@
                     }
 
                 }
-                //                    var_dump( $searchCategories);
                 ?>
+                <script type="text/javascript">
+                    // pass PHP variable declared above to JavaScript variable
+                    var searchCategories_json = <?php echo json_encode($searchCategories) ?>;
+
+                </script>
 
 
-                <?php
-                //
-                ?>
-
-                <!--                    <span onclick="updateSearchCategory(this.innerText)">Restaurant</span>-->
-                <!--                    <span onclick="updateSearchCategory(this.innerText)">Category</span>-->
             </div>
         </div>
 
         <div class="dropdown">
-            <button id="search-item-btn" class = "dropdown-btn" onclick="showSearchItems()">
-                All items<span>&#9660;</span>
-            </button>
-            <div id ="search-item-content" class = "dropdown-content" >
-
-
-
-                //                       echo"<span onclick='updateSearchCategory(this.innerText)'>".$searchCategory."</span>";
-
-
-                <?php
-
-                //                    echo $_SESSION['searchCategory'];
-
-                ?>
-
-
-                <!--                    <span onclick="updateSearchItem(this.innerText)">KFC</span>-->
-                <!--                    <span onclick="updateSearchItem(this.innerText)">MC'Donalds</span>-->
+            <div class="moved-down">
+                <div id ="search-item-content" class = "dropdown-content" onmouseover="style='display: block'" onmouseout="style='display: none;'"></div>
             </div>
+
         </div>
 
         <div class="inputbar">
-            <input id="search-input" type="text" placeholder="Seach for food">
+            <input id="search-input" type="text" placeholder="Seach for food" onkeyup="search(this.value)">
             <button id="search-btn"><div> &#9906;</div></button>
         </div>
 
@@ -99,6 +83,5 @@
     </div>
 
 </nav>
-
-
 <script src="../js/searchbar.js"></script>
+

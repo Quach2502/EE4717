@@ -34,7 +34,10 @@ nav a {
     position: relative;
     display: inline-block;
 }
-
+.moved-down{
+    position: absolute;
+    top: 40px;
+}
 .dropdown-btn{
     background-color: #3d3f3e;
     color: white;
@@ -72,7 +75,7 @@ nav a {
 
 .dropdown-content span{
     color: black;
-    padding: 12px 16px;
+    padding: 16px 16px;
     display: block;
 }
 
