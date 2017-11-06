@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
+	<link rel="stylesheet" href="../css/modal.css">
 	<script type="text/javascript" src = "../js/utilsUserInfoPage.js"></script>
 	<script type ="text/javascript" src = "../js/initUserInfoPage.js"></script>
 	<title>Food Product</title>
@@ -92,8 +93,9 @@
 			$handphone =  $row['handphone'];
 			$address =  $row['address'];
 		}
-		$sql = "SELECT * FROM `orderhistory` WHERE `username` = '{$username}'";
+		$sql = "SELECT * FROM `orderhistory` WHERE `username` = '$username'";
 		$num_result = 0;
+		$resultOrder = $db->query($sql);
 		if(isset($resultOrder)){
 			$num_result = mysqli_num_rows($resultOrder);
 		}
@@ -132,7 +134,7 @@
 		echo 		'</table>';
 		echo '</form>';
 		echo 	'</div>';
-
+// -------------------------------------------------------------------------------------------------------
 
 		echo 	'<div id = "change_psw" style="display:none;">';
 		echo '<form action="functions/update_psw.php" method ="post" onSubmit ="return formPswValidate()">';
@@ -157,31 +159,64 @@
 		echo 		'</table>';
 		echo '</form>';
 		echo 	'</div>';
-
+// -----------------------------------------------------------------------------------------------------------
 
 		echo 	'<div id = "order_history" style="display:none;">';
 		if ($num_result > 0){
 			echo 		"<table border = '1'>";
 			echo 			"<thead>";
 			echo 				"<tr>";
-			echo 					"<th>Date</th>";
+			echo 					"<th></th>";
+			echo 					"<th>Date Order</th>";
+			echo 					"<th>Receiver</th>";
+			echo 					"<th>Address</th>";
+			echo 					"<th>Chosen Time</th>";
 			echo 					"<th>Total Price</th>";
 			echo 					"<th>Status</th>";
 			echo 				"</tr>";
 			echo 			"</thead>";
 			while($row = mysqli_fetch_array($resultOrder)) {
+				$orderId = $row['orderid'];
 				echo 			'<tr>';
-				echo 				'<td>'.$row['date'].'</td>';
-				echo 				'<td>'.$row['totalprice'].'</td>';
+				echo 				'<td><span class="show_modal" id = "'.$orderId.'"><a href="#">Details</a></span></td>';
+				echo 				'<td>'.$row['dateorder'].'</td>';
+				echo 				'<td>'.$row['receiver'].'</td>';
+				echo 				'<td>'.$row['address'].'</td>';
+				echo 				'<td>'.$row['prefertime'].'</td>';
+				echo 				'<td>'.$row['totalprice'].'$</td>';
 				echo 				'<td>'.$row['status'].'</td>';
 				echo 			'</tr>';
 			}
 			echo 		'</table>';
+			mysqli_data_seek($resultOrder, 0);
+			while($row = mysqli_fetch_array($resultOrder)) {
+				$orderIdForDetails = $row['orderid'];
+				$sqlDetails = "SELECT * FROM `orderdetails` WHERE `orderid` = '$orderIdForDetails'";
+				$resultDetails = $db->query($sqlDetails);
+				echo '<div id="modal_'.$orderId.'" class="modal">';
+				echo "<span onclick='document.getElementById(\"modal_".$orderId."\").style.display=\"none\"' class=\"close\">×</span>";
+				echo 	'<table class="modal-content animate" border = "1">';
+				echo 		"<thead>";
+				echo 			"<tr>";
+				echo 				"<th>Food Name</th>";
+				echo 				"<th>Quantity</th>";
+				echo				"<th>Subtotal</th>";
+				echo 			"</tr>";
+				echo 		"</thead>";
+				while($rowDetails = mysqli_fetch_array($resultDetails)) {
+					echo 	'<tr>';
+					echo 		'<td>'.$rowDetails['foodname'].'</td>';
+					echo 		'<td>'.$rowDetails['quantity'].'</td>';
+					echo 		'<td>'.$rowDetails['subtotal'].'$</td>';
+					echo 	'</tr>';
+				}
+				echo 	'</table>';
+				echo '</div>';
+			}
 		}
 		else{
 			echo "No record";
 		}
-		echo 	'</div>';
 		echo 	'</div>';
 		?>
 	</div>
