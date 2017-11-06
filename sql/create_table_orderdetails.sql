@@ -25,47 +25,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orderhistory`
+-- Table structure for table `orderdetails`
 --
 
-CREATE TABLE `orderhistory` (
+CREATE TABLE `orderdetails` (
   `orderid` varchar(200) NOT NULL,
-  `username` char(100) DEFAULT NULL,
+  `foodid` int(10) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `subtotal` double NOT NULL,
   `dateorder` datetime NOT NULL,
-  `totalprice` double NOT NULL,
-  `status` char(50) NOT NULL DEFAULT '"Processing"',
-  `receiver` text NOT NULL,
-  `address` text NOT NULL,
-  `prefertime` datetime NOT NULL
+  `foodname` char(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `orderhistory`
+-- Dumping data for table `orderdetails`
 --
 
-INSERT INTO `orderhistory` (`orderid`, `username`, `dateorder`, `totalprice`, `status`, `receiver`, `address`, `prefertime`) VALUES
-('admin5a007434dcec9', 'admin', '2017-11-06 15:39:48', 22, '\"Processing\"', 'Quach', 'NTU Hall 7', '2017-11-06 23:00:00');
+INSERT INTO `orderdetails` (`orderid`, `foodid`, `quantity`, `subtotal`, `dateorder`, `foodname`) VALUES
+('admin5a007434dcec9', 2, 1, 2, '2017-11-06 15:39:48', 'image2'),
+('admin5a007434dcec9', 10, 2, 20, '2017-11-06 15:39:48', 'image10');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `orderhistory`
+-- Indexes for table `orderdetails`
 --
-ALTER TABLE `orderhistory`
-  ADD PRIMARY KEY (`orderid`),
-  ADD KEY `username` (`username`);
+ALTER TABLE `orderdetails`
+  ADD PRIMARY KEY (`orderid`,`foodid`),
+  ADD KEY `foodid` (`foodid`);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `orderhistory`
+-- Constraints for table `orderdetails`
 --
-ALTER TABLE `orderhistory`
-  ADD CONSTRAINT `orderhistory_ibfk_1` FOREIGN KEY (`username`) REFERENCES `user` (`username`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `orderdetails`
+  ADD CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`foodid`) REFERENCES `food` (`foodid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  ADD CONSTRAINT `orderdetails_ibfk_3` FOREIGN KEY (`orderid`) REFERENCES `orderhistory` (`orderid`) ON DELETE NO ACTION ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

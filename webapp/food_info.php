@@ -62,6 +62,7 @@
 				<a href="#about">About us</a>
 				<a href="#feedback">Feedback</a>
 				<?php
+				include "class/InfoCartItem.php";
 				session_start();
 				if(isset($_SESSION['valid_user'])){
 					echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
@@ -74,19 +75,10 @@
 			</nav>
 		</header>
 		<?php
-//		function __autoload($class_name) {
-//			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/EE4717/webapp/class/'.$class_name . '.php');
-//            $root = realpath($_SERVER["DOCUMENT_ROOT"]);
-//            echo $root;
-//            echo "abc";
-//			echo $root.'/EE4717/webapp/class/'.$class_name. '.php';
-//		}
-        include "class/InfoCartItem.php";
-        include "functions/dbconnect.php";
 
+		include "./functions/dbconnect.php";		
+		$description ='Description here';
 
-
-        $description ='Description here';
 		$foodName = 'Name here';
 		$price = 'Price here';
 		$imageLink = '../asset/error.jpg';
@@ -139,7 +131,7 @@
 		echo '<div id = "food_price" value="'.$price.'">'.$price.'</div>';
 
 		echo '<button type="button" id ="order_init">Order Now!</button><br>';
-		echo '<form  id = "add_to_cart_form" method ="post" action="food_info.php">';
+		echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
 		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';
 		echo	'<input name="foodname" type="hidden" value='.$foodName.'>';?>
 		<div id="getQuantity" style="display:none;">
