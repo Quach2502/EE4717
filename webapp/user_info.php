@@ -78,7 +78,7 @@
 			</nav>
 		</header>
 		<?php
-		include "dbconnect.php";
+		include "functions/dbconnect.php";
 		if(!isset($_SESSION['valid_user'])){
 			echo "Invalid access.";
 			exit;
@@ -105,7 +105,7 @@
 		echo "<a href='#' id ='show_change_psw'>Change Password</a></div>";
 		echo '<div id = "rightcolumn">';
 		echo 	'<div id = "info">';
-		echo '<form action="update_info.php" method ="post" onSubmit ="return formInfoValidate()">';
+		echo '<form action="functions/update_info.php" method ="post" onSubmit ="return formInfoValidate()">';
 		echo 		'<table>';
 		echo 			'<tr>';
 		echo 				'<td>Fullname*</td>';
@@ -136,7 +136,7 @@
 
 
 		echo 	'<div id = "change_psw" style="display:none;">';
-		echo '<form action="update_psw.php" method ="post" onSubmit ="return formPswValidate()">';
+		echo '<form action="functions/update_psw.php" method ="post" onSubmit ="return formPswValidate()">';
 		echo 		'<table>';
 		echo 			'<tr>';
 		echo 				'<td>Current Password</td>';

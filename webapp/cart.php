@@ -85,7 +85,7 @@
          * Time: 4:30 PM
          */
         function __autoload($class_name) {
-        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
+        	require_once(realpath($_SERVER["DOCUMENT_ROOT"]).'/webapp/class/'.$class_name . '.php');
         }
 
         include "dbconnect.php";
