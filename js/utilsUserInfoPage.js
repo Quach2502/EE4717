@@ -176,5 +176,10 @@ function formPswValidate(){
 		alert("Your current password is wrong!");
 		return false;
 	}
+}
 
+function showModal(event){
+	var orderId = event.currentTarget.id;
+	var modalId = 'modal_' + orderId;
+	document.getElementById(modalId).style.display = 'block';
 }
