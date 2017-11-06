@@ -75,8 +75,10 @@
 			</nav>
 		</header>
 		<?php
+
 		include "./functions/dbconnect.php";		
 		$description ='Description here';
+
 		$foodName = 'Name here';
 		$price = 'Price here';
 		$imageLink = '../asset/error.jpg';
@@ -95,12 +97,15 @@
 				$_SESSION['cart'][$foodId]->subtotal += $subtotal;
 			}
 			else{
+
 				$infoCartItem = new InfoCartItem();
 				$infoCartItem->quantity = $quantity;
 				$infoCartItem->subtotal = $subtotal;
 				$infoCartItem->name = $name;
 				$_SESSION['cart'][$foodId] = $infoCartItem;
 			}
+
+
 		}
 		if(isset($_POST['foodid'])){
 			$foodId = $_POST['foodid'];
