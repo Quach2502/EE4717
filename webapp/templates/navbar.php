@@ -76,12 +76,19 @@
         <div class="inputbar">
             <div style="display: block;">
                 <input id="search-input" type="text" placeholder="Seach for food" onkeyup="search(this.value)">
-                <button id="search-btn"><div> &#9906;</div></button>
+                <button id="search-btn" onclick="onClickSearchButton()"><div> &#9906;</div></button>
             </div>
             <div id="search-result"></div>
         </div>
 
+<!--        hidden form-->
+        <form id="search-result-item-form" hidden action='food_info.php' method='post'>
+            <input id="search-result-item-foodid" name='foodid' value='' hidden>
+        </form>
 
+        <form id="search-button-form" hidden action="search.php" method="post">
+            <input id="search-button-foodid" name='foodids' value='' hidden>
+        </form>
 
     </div>
 

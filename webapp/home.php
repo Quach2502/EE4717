@@ -15,9 +15,8 @@
     <?php
         include "templates/navbar.php";
     ?>
-
-
 </header>
+
 <main>
     <div class = "content-wrap">
         <section id="hero" class="hero-wrap">

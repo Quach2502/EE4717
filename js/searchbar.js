@@ -6,13 +6,14 @@ var chosenCategoryItem ='all';
 var chosenCategoryName ='all';
 var tempCategoryItems = [];
 var tempCategoryName ='';
+var searchResult='';
 
 function showSearchCategories() {
     document.getElementById("search-category-content").classList.toggle("show");
 }
 
 function showSearchItems(){
-    document.getElementById("search-item-content").style.display="block";
+    showItem("search-item-content");
 }
 
 function addItemToSearchItems(){
@@ -39,7 +40,6 @@ function showItem(divId){
 window.onclick = function(event) {
     if (!event.target.matches('.dropdown-btn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
-        console.log("entered here");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
 
@@ -58,18 +58,11 @@ window.onclick = function(event) {
     }
 
     if (!event.target.matches('search-item-content')) {
-
-                document.getElementById("search-item-content").style.display="none";
+               hideItem('search-item-content');
             }
 
 
 }
-
-//clear the search result dropdown
-// window.onclick = function(event){
-//
-// }
-
 
 function clearSearchFilter(){
     chosenCategoryItem='all';
@@ -147,18 +140,35 @@ function search(textinput){
 function displaySearchResult(responseText){
     console.log(responseText);
     var response = JSON.parse(responseText);
+    searchResult = response;
     document.getElementById('search-result').innerHTML='';
         for (i=0; i<response.length; i++){
             var item = response[i];
             var itemSpan = document.createElement("span");
             itemSpan.innerText=item.name;
             itemSpan.classList.add("search-result-item");
-            // // itemSpan.onclick = function () { updateSearchWithItem(this.innerText); };
+            itemSpan.value = item.foodid;
+            itemSpan.onclick =  function() { onClickSearchResultItem(this.innerText, this.value)}; ;
             document.getElementById('search-result').appendChild(itemSpan);
         }
+}
 
+function onClickSearchResultItem(name, foodid){
+    console.log(name, foodid);
+    if (name != "No items found"){
+        document.getElementById('search-result-item-foodid').value = foodid;
+        document.getElementById('search-result-item-form').submit();
+    }
 
+}
 
-
-
+function onClickSearchButton(){
+    itemFoodIds = [];
+    for (i=0; i<searchResult.length; i++){
+        item = searchResult[i];
+        itemFoodIds.push(item.foodid);
+    }
+    console.log('itemFoodIds', itemFoodIds);
+    document.getElementById('search-button-foodid').value=itemFoodIds;
+    document.getElementById('search-button-form').submit();
 }

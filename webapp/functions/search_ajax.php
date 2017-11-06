@@ -29,6 +29,7 @@ if(isset($result)){
 }
 if ($num_result == 0){
     $search_result->name ='No items found';
+    $search_result->foodid=-1;
     $array[] =$search_result;
 }
 else{
