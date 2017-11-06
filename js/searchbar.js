@@ -27,28 +27,48 @@ function addItemToSearchItems(){
 function clearItemInSearchItems(){
     document.getElementById('search-item-content').innerHTML = '';
 }
+
+function hideItem(divId){
+    document.getElementById(divId).style.display="none";
+}
+
+function showItem(divId){
+    document.getElementById(divId).style.display="block";
+}
 // clear the dropdown
 window.onclick = function(event) {
     if (!event.target.matches('.dropdown-btn')) {
         var dropdowns = document.getElementsByClassName("dropdown-content");
+        console.log("entered here");
         var i;
         for (i = 0; i < dropdowns.length; i++) {
+
             var openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
+                // document.getElementById("search-category-content").style.display="none";
             }
         }
     }
-}
 
-//clear the search result dropdown
-window.onclick = function(event){
     if (document.getElementById("search-result")){
         if (!event.target.matches('search-result')){
             document.getElementById("search-result").innerHTML="";
         }
     }
+
+    if (!event.target.matches('search-item-content')) {
+
+                document.getElementById("search-item-content").style.display="none";
+            }
+
+
 }
+
+//clear the search result dropdown
+// window.onclick = function(event){
+//
+// }
 
 
 function clearSearchFilter(){

@@ -68,7 +68,7 @@
 
         <div class="dropdown">
             <div class="moved-down">
-                <div id ="search-item-content" class = "dropdown-content" onmouseover="style='display: block'" onmouseout="style='display: none;'"></div>
+                <div id ="search-item-content" class = "dropdown-content" onmouseover="showItem('search-item-content')" onmouseout="hideItem('search-item-content')"></div>
             </div>
 
         </div>
