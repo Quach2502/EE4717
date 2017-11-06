@@ -39,7 +39,7 @@ function handphoneValidate(event) {
 }
 
 function pswValidate(event) {
-	var psw = event.currentTarget.value.strip();
+	var psw = event.currentTarget.value;
 	if(psw.length >= 5){
 		validateInformation.psw = true;
 		document.getElementById("errorPsw").style.display = 'none';

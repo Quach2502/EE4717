@@ -109,22 +109,22 @@
 		echo 		'<table>';
 		echo 			'<tr>';
 		echo 				'<td>Fullname*</td>';
-		echo 				'<td><input type="text" id ="fullname" value="'.$fullname.'"></td>';
+		echo 				'<td><input type="text" name ="fullname" id ="fullname" value="'.$fullname.'"></td>';
 		echo 				'<td><span class = "error" id ="errorName">Invalid!</span></td>';
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td>Email*</td>';
-		echo 				'<td><input type="text" id ="email" value="'.$email.'"></td>';
+		echo 				'<td><input type="text" id ="email" name="email" value="'.$email.'"></td>';
 		echo 				'<td><span class = "error" id ="errorEmail">Invalid!</span></td>';
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td>Handphone* (will be used as a default contact for shipping)</td>';
-		echo 				'<td><input type="text" id ="handphone" value="'.$handphone.'"></td>';
+		echo 				'<td><input type="text" id ="handphone" name="handphone" value="'.$handphone.'"></td>';
 		echo 				'<td><span class = "error" id ="errorHandphone">Invalid!</span></td>';
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td>Address (will be used as a default shipping address)</td>';
-		echo 				'<td><input type="text" id ="address" value="'.$address.'"></td>';
+		echo 				'<td><input type="text" name="address" id ="address" value="'.$address.'"></td>';
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td></td>';
@@ -136,15 +136,15 @@
 
 
 		echo 	'<div id = "change_psw" style="display:none;">';
-		echo '<form action="change_psw.php" method ="post" onSubmit ="return formPswValidate()">';
+		echo '<form action="update_psw.php" method ="post" onSubmit ="return formPswValidate()">';
 		echo 		'<table>';
 		echo 			'<tr>';
 		echo 				'<td>Current Password</td>';
-		echo 				'<td><input type="password" id ="pendpsw" ><input type="hidden" id ="psw" value="'.$psw.'" ></td>';
+		echo 				'<td><input type="password" id ="pendpsw" ></td>';
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td>New Password</td>';
-		echo 				'<td><input type="password" id ="newpsw" ></td>';
+		echo 				'<td><input type="password" name = "newpsw" id ="newpsw" ></td>';
 		echo 				'<td><span class = "error" id ="errorPsw">Invalid!</span></td>';		
 		echo 			'</tr>';
 		echo 			'<tr>';

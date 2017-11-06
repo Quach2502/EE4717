@@ -1,7 +1,7 @@
 var validateInformation = {
-	fullname : false,
-	email : false,
-	handphone:false,
+	fullname : true,
+	email : true,
+	handphone:true,
 	pendpsw:false,
 	newpsw:false,
 	validAll : function(){
@@ -57,7 +57,7 @@ function handphoneValidate(event) {
 }
 
 function newpswValidate(event) {
-	var psw = event.currentTarget.value.strip();
+	var psw = event.currentTarget.value;
 	if(psw.length >= 5){
 		validateInformation.newpsw = true;
 		document.getElementById("errorPsw").style.display = 'none';
