@@ -103,6 +103,25 @@ nav a {
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+#search-result{
+    display: block;
+    font-size: 16px;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 500px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 160px;
+}
+.search-result-item{
+    color: black;
+    padding: 16px 16px;
+    text-align: left;
+    display: block;
+}
+
 /********************************************************/
 .content-wrap{
 

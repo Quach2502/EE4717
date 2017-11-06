@@ -27,7 +27,7 @@
     <div class = "searchbar">
         <div class="dropdown">
             <button id="search-category-btn" class = "dropdown-btn" onclick="showSearchCategories()">
-                All categories<span>&#9660;</span>
+                All items<span>&#9660;</span>
             </button>
             <div id="search-category-content" class = "dropdown-content">
                 <?php
@@ -36,7 +36,7 @@
                     'name'=>'Restaurant',
                     'items'=>array()),
                     'category'=>array(
-                        'name'=> 'Food Category',
+                        'name'=> 'Category',
                         'items'=>array())
                 );
 
@@ -74,8 +74,11 @@
         </div>
 
         <div class="inputbar">
-            <input id="search-input" type="text" placeholder="Seach for food" onkeyup="search(this.value)">
-            <button id="search-btn"><div> &#9906;</div></button>
+            <div style="display: block;">
+                <input id="search-input" type="text" placeholder="Seach for food" onkeyup="search(this.value)">
+                <button id="search-btn"><div> &#9906;</div></button>
+            </div>
+            <div id="search-result"></div>
         </div>
 
 

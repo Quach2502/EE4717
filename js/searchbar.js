@@ -2,8 +2,8 @@
  * Created by long on 5/11/17.
  */
 console.log(searchCategories_json);
-var chosenCategoryItem ='All items';
-var chosenCategoryName ='All categories';
+var chosenCategoryItem ='all';
+var chosenCategoryName ='all';
 var tempCategoryItems = [];
 var tempCategoryName ='';
 
@@ -41,14 +41,24 @@ window.onclick = function(event) {
     }
 }
 
+//clear the search result dropdown
+window.onclick = function(event){
+    if (document.getElementById("search-result")){
+        if (!event.target.matches('search-result')){
+            document.getElementById("search-result").innerHTML="";
+        }
+    }
+}
+
+
 function clearSearchFilter(){
-    chosenCategoryItem='All items';
-    chosenCategoryName='All categories';
+    chosenCategoryItem='all';
+    chosenCategoryName='all';
 }
 
 function updateSearchWithCategory(val) {
     clearSearchFilter();
-    document.getElementById("search-category-btn").innerText = val;
+    document.getElementById("search-category-btn").innerText = 'All items';
     chosenCategoryName = tempCategoryName;
     console.log("choosen", chosenCategoryName, chosenCategoryItem);
     // findCategoryItems(val);
@@ -99,7 +109,8 @@ function search(textinput){
     xhr.onreadystatechange = function() {
         if (this.readyState == 4) {
             if (this.status == 200) {
-                console.log(this.responseText);
+                // console.log(this.responseText);
+                displaySearchResult(this.responseText);
 
             }
             else{
@@ -110,5 +121,24 @@ function search(textinput){
 
     xhr.open("GET", "functions/search_ajax.php?category="+chosenCategoryName +"&item="+chosenCategoryItem+"&input="+textinput, true);
     xhr.send();
+
+}
+
+function displaySearchResult(responseText){
+    console.log(responseText);
+    var response = JSON.parse(responseText);
+    document.getElementById('search-result').innerHTML='';
+        for (i=0; i<response.length; i++){
+            var item = response[i];
+            var itemSpan = document.createElement("span");
+            itemSpan.innerText=item.name;
+            itemSpan.classList.add("search-result-item");
+            // // itemSpan.onclick = function () { updateSearchWithItem(this.innerText); };
+            document.getElementById('search-result').appendChild(itemSpan);
+        }
+
+
+
+
 
 }

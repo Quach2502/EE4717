@@ -6,29 +6,38 @@ $searchtext = $_GET['input'];
 $searchquery ='';
 //echo $category.$item.$searchtext;
 
-if ($category=='All categories'){
+if ($item=='all'){
     if ($searchtext == '') {
         $searchquery = "SELECT * FROM `food`";
     }
     else{
-        $searchquery = "SELECT * FROM `food` WHERE name='$searchtext'";
+        $searchquery = "SELECT * FROM `food` WHERE name LIKE '%{$searchtext}%'";
     }
 }
 else{
-    if($item=='All items'){
-
+    if ($searchtext == '') {
+        $searchquery = "SELECT * FROM `food` WHERE $category='$item'";
     }
     else{
-
+        $searchquery = "SELECT * FROM `food` WHERE $category='$item' AND name LIKE '%{$searchtext}%'";
     }
 }
-if ($searchtext == ''){
-    $searchquery = "SELECT * FROM `food` WHERE $category='item' AND "
-}
-$searchquery = "SELECT * FROM `food` WHERE name='";
-$result = $db->query($query);
+
+$result = $db->query($searchquery);
 if(isset($result)){
     $num_result = mysqli_num_rows($result);
 }
+if ($num_result == 0){
+    $search_result->name ='No items found';
+    $array[] =$search_result;
+}
+else{
+    for ($i=0; $i<$num_result; $i++) {
+        $row = $result->fetch_assoc();
+        $array[] = $row;
+    }
+}
+
+echo json_encode($array);
 
 ?>
