@@ -67,6 +67,7 @@
                 </div>
                 <div class="container" style="background-color:#f1f1f1">
                     <span class="psw">Forgot <a href="#">password?</a></span>
+                    <span style="float:left;"><a href="registration.html">Register</a></span>
                 </div>
             </form>
 

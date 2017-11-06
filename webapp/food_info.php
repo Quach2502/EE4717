@@ -61,14 +61,21 @@
 				<a href="#search">Search</a>
 				<a href="#about">About us</a>
 				<a href="#feedback">Feedback</a>
-				<a href="#account">My Account</a>
-				<a href="#login">Login</a>
-				<a href="cart.php">Cart</a>
+				<?php
+				session_start();
+				if(isset($_SESSION['valid_user'])){
+					echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
+					echo '<a href="cart.php">My Cart</a>';
+					echo '<a href="logout.php">Logout</a>';
+				}else{    
+					echo "<a href='login.php'>Login</a>";
+				}
+				?>
 			</nav>
 		</header>
 		<?php
 		function __autoload($class_name) {
-			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/f36ee/EE4717/webapp/class/'.$class_name . '.php');
+			require_once (realpath($_SERVER["DOCUMENT_ROOT"]).'/ee4717/webapp/class/'.$class_name . '.php');
 		}
 		include "dbconnect.php";
 
@@ -80,7 +87,6 @@
 		$restaurant = 'Restaurant here';
 		$category = 'Category here';
 		if(isset($_POST['add_to_cart'])){
-			session_start();
 			if(!isset($_SESSION['cart'])){
 				$_SESSION['cart'] = array();
 			}
