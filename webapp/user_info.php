@@ -2,6 +2,7 @@
 <html lang = "en">
 <head>
 	<link rel="stylesheet" href="../css/modal.css">
+	<link rel="stylesheet" href="../css/table.css">
 	<script type="text/javascript" src = "../js/utilsUserInfoPage.js"></script>
 	<script type ="text/javascript" src = "../js/initUserInfoPage.js"></script>
     <link rel="stylesheet" href="../css/home.css">
