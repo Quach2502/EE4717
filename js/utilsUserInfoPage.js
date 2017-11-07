@@ -147,7 +147,7 @@ function checkPendingPsw(){
 			}
 		}
 	};
-	xhr.open('GET', './check_pendpsw.php?pendpsw=' + pendpswValue+'&username='+usernameValue, true);
+	xhr.open('GET', 'functions/check_pendpsw.php?pendpsw=' + pendpswValue+'&username='+usernameValue, true);
 	xhr.send();	
 }
 
