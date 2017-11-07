@@ -88,3 +88,7 @@
 .glyphicon-minus:before{
     content:"\2212"
 }
+
+.text-bold{
+    font-weight:bold;
+}

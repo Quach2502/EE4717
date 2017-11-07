@@ -46,7 +46,7 @@
                         $foodPrice = $row['price'];
 
                         echo "<div class = 'myslider fade col four-col'>";
-                            echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\">";
+                            echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\" onclick = \"tofoodinfo($foodId)\">";
                                     echo "<div class ='caption'>".$foodName."</div>";
                             echo "</div>";
                         echo "</div>";
@@ -80,7 +80,6 @@
             if (!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = array();
             }
-            echo $_SESSION['cart'];
             $subtotal = $_POST['subtotal'];
             $quantity = $_POST['quantity'];
             $foodId = $_POST['foodid'];
@@ -117,10 +116,10 @@
 //                            echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
                             echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
                             echo "<span class='tag'>Promoted</span>";
-                            echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\"></div>";
+                            echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\" onclick = \"tofoodinfo($foodId)\"></div>";
                             echo "<h3> Food Name: ".$foodName."</h3>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
-                            echo "<h1> Price: SGD $".$foodPrice."</h1>";
+                            echo "<h1> Price: S$".$foodPrice."</h1>";
 //                            echo "<button>Order now! </button>";
 
 
@@ -149,8 +148,8 @@
                             echo '</div>';
                         echo "</div>";
 
-                    echo "<form action='food_info.php' method='post'>";
-                    echo "<input name='foodid' value='$foodId' hidden>";
+                    echo "<form id ='foodinfo-form-".$foodId."' action='food_info.php' method='post'>";
+                    echo "<input name='foodid' value='".$foodId."' hidden>";
                     echo "</form>";
 
                     echo "<form id = 'addcart-form-".$foodId."' action= 'home.php' method='post' onSubmit='return formValidate()' >";

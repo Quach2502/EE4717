@@ -3,10 +3,8 @@
  */
 
 var minInputValue = 1;
-var maxInputValue = 5;
-// var inputDom ='';
-// var addBtnDom = '';
-// var minusBtnDom = '';
+var maxInputValue = 100;
+
 var inputQuantityId = '';
 var addBtnId = '';
 var minusBtnId ='';
@@ -15,6 +13,7 @@ var addcartFormId ='';
 var quantityId ='';
 var subtotalId = '';
 var foodpriceId ='';
+var foodinfoFormId ='';
 
 function getIds(id){
     inputQuantityId = "input-quantity-"+id;
@@ -25,18 +24,11 @@ function getIds(id){
     quantityId = "quantity-"+id;
     subtotalId = "subtotal-"+id;
     foodpriceId ="foodprice-"+id;
-    console.log(foodpriceId);
+    foodinfoFormId="foodinfo-form-"+id;
 }
 
-// function getDom(){
-//     inputDom = document.getElementById(inputQuantityId);
-//     addBtnDom = document.getElementById(addBtnId);
-//     minusBtnDom = document.getElementById(minusBtnId);
-//     console.log(inputDom, addBtnDom, minusBtnDom);
-// }
 function add(id){
     getIds(id);
-    // getDom();
     resetBtn();
     if (document.getElementById(inputQuantityId).value<maxInputValue){
         document.getElementById(inputQuantityId).value ++;
@@ -48,7 +40,6 @@ function add(id){
 
 function minus(id){
     getIds(id);
-    // getDom();
     resetBtn();
     if (document.getElementById(inputQuantityId).value>minInputValue){
         document.getElementById(inputQuantityId).value --;
@@ -76,20 +67,22 @@ function resetBtn(){
 
 function addtocart(id){
     getIds(id);
-    // getDom();
     document.getElementById(quantityId).value=document.getElementById(inputQuantityId).value;
     computeFoodPrice();
     document.getElementById(addcartFormId).submit();
 }
-
+function tofoodinfo(id){
+    getIds(id);
+    document.getElementById(foodinfoFormId).submit();
+}
 function computeFoodPrice(){
     var price = document.getElementById(foodpriceId).value;
     console.log("price", price);
     var quantity = document.getElementById(quantityId).value;
-    if(quantity < 0){
+    if(quantity <= 0){
         alert('Quantity must be larger than 0');
-        inputDom.value = 0;
-        document.getElementById(quantityId).value =0;
+        inputDom.value = 1;
+        document.getElementById(quantityId).value =1;
     }
     else{
         document.getElementById(subtotalId).value = price * quantity;

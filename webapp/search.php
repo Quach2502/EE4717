@@ -29,6 +29,7 @@
                         $foodName = $row['name'];
                         $imageLink = "../asset/" . $row['imagelink'];
                         $foodPrice = $row['price'];
+                        $foodId = $row['foodid'];
 
                         if ($i % 5 == 0) {
                             echo "<div class='row'>";
