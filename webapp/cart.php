@@ -3,62 +3,8 @@
 	<script type="text/javascript" src = "../js/utilsCartPage.js"></script>
 	<script type ="text/javascript" src = "../js/initCartPage.js"></script>
     <link rel="stylesheet" href="../css/home.css">
-    <style>
-    html{
-      max_width: 90%;
-  }
+    <link rel="stylesheet" href="../css/table.css">
 
-  nav {
-      text-align: center;
-      background: rgba(10, 14, 21, 0.58);
-  }
-
-  nav a {
-      display: inline-block;
-      padding: 15px 20px;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: white;
-  }
-
-  .content-wrap{
-      /*max-width: 90%;*/
-      margin: 20px auto;
-  }
-  .error{
-      color: rgb(255,0,0);
-      display: none;
-  }
-  .five-column{
-      float: left;
-      overflow: hidden;
-      width: 19%;
-      display: table-cell;
-      vertical-align: middle;
-      text-align: center;
-  }
-
-  .five-column::after{
-      clear:both;
-  }
-
-  .img-thumbnail{
-      width: 240px;
-      height: 160px;
-      overflow: hidden;
-
-  }
-
-  .content-centered{
-      margin: auto;
-      display: inline-block;
-  }
-
-  img+h2{
-      margin: 0px;
-  }
-</style>
 </head>
 
 <body>
@@ -103,7 +49,7 @@
    }
         // print_r($_SESSION['cart']);
    $num_items_cart = count($_SESSION['cart']);
-   echo $num_items_cart;
+   // echo $num_items_cart;
 //        var_dump($_SESSION['cart']);
    if($num_items_cart > 0){
        $total = 0;

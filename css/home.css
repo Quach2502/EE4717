@@ -235,7 +235,10 @@ nav a {
     background-color: #717171;
 }
 
-
+.error{
+    color: rgb(255,0,0);
+    display: none;
+}
 .img-slider{
     overflow: hidden;
     background-image: url('../asset/error.png');
