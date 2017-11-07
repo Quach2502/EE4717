@@ -121,7 +121,7 @@ function checkUsername(event){
 			}
 		}
 	};
-	xhr.open('GET', './check_username.php?username=' + usernameValue, true);
+	xhr.open('GET', 'functions/check_username.php?username=' + usernameValue, true);
 	xhr.send();	
 }
 
