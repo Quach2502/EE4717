@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel="stylesheet" href="../css/home.css">
 	<style>
 	html{
 		max_width: 90%;
@@ -56,21 +57,11 @@
 </head>
 <body>
 	<!--    Navigation bar -->
-	<header id="">
-		<nav class="display">
-			<a href="#food">Food</a>
-			<a href="#search">Search</a>
-			<a href="#about">About us</a>
-			<a href="#feedback">Feedback</a>
-			<a href="#account">My Account</a>
-			<a href="#login">Login</a>
-			<a href="cart.php">Cart</a>
-		</nav>
+    <header id="">
+        <?php
+        include "templates/navbar.php";
+        ?>
+    </header>
 
-		<div class = "content-wrap">
-			<p>This is purchase page</p>
-			
-		</div>
-	</header>
 </body>
 </html>
