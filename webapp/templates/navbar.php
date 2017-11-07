@@ -9,7 +9,6 @@
         <a href="search.php">Search</a>
         <a href="#about">About us</a>
         <a href="#feedback">Feedback</a>
-
         <?php
         if(!isset($_SESSION)){
             session_start();

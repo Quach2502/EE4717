@@ -7,6 +7,10 @@ function init(){
 	document.getElementById('fullname').addEventListener("change",fullnameValidate,false);
 	document.getElementById('newpsw').addEventListener("change",newpswValidate,false);
 	document.getElementById('pendpsw').addEventListener("blur",checkPendingPsw,false);
+	var modal = document.getElementsByClassName("show_modal");
+		for (var i =0;i < modal.length;i++){
+			modal[i].addEventListener('click',showModal,false);
+		}
 }
 
 window.onload = init;
