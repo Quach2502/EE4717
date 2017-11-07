@@ -8,6 +8,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/add_item_quantity.css">
 </head>
 <body>
 <!--    Navigation bar -->
@@ -78,9 +79,9 @@
                 }
 
                 echo "<div class='col five-col'> ";
-                    echo "<form action='food_info.php' method='post'>";
+
                         echo "<div class='food-info'>";
-                            echo "<input name='foodid' value='$foodId' hidden>";
+
 //                            echo "<input type='image' src='".$imageLink."' class='img-thumbnail'>";
                             echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
                             echo "<span class='tag'>Promoted</span>";
@@ -88,10 +89,41 @@
                             echo "<h3> Food Name: ".$foodName."</h3>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
                             echo "<h1> Price: SGD $".$foodPrice."</h1>";
-                            echo "<button>Order now! </button>";
+//                            echo "<button>Order now! </button>";
+
+
+
+                            echo '<div class="center">';
+                            echo '<div class="input-group">';
+                                echo '<span class="input-group-btn">';
+                                    echo '<button id="add-btn-'.$foodId.'" type="button" class="btn btn-success" onclick="add(\'add-btn-'.$foodId.
+                                        '\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">';
+                                        echo '<span class="glyphicon glyphicon-plus"></span>';
+                                    echo ' </button>';
+                                echo '</span>';
+
+                                echo '<span class="input-group-btn">';
+                                    echo '<button id = "minus-btn-'.$foodId.'" type="button" class="btn btn-danger" onclick="minus(\'add-btn-'.$foodId.
+                                    '\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">';
+                                        echo '<span class="glyphicon glyphicon-minus"></span>';
+                                    echo '</button>';
+                                echo ' </span>';
+
+                                echo '<input id="input-quantity-'.$foodId.'" type="number" class="form-control input-number" placeholder="1" value="1">';
+
+                                echo '<span class="input-group-btn">';
+                                    echo '<button id="addcart-btn-'.$foodId.'" type="button" class="btn btn-danger" 
+                                                            onclick = "addtocart(\'add-btn-'.$foodId.'\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">Add to cart</button>';
+                                echo '</span>';
+                            echo '</div>';
+                            echo '</div>';
                         echo "</div>";
-                    echo "</form>";
                 echo "</div>";
+
+            echo "<form action='food_info.php' method='post'>";
+                echo "<input name='foodid' value='$foodId' hidden>";
+            echo "</form>";
+
 
                 if ($i %5 == 4){
                     echo "</div>";
@@ -106,5 +138,6 @@
 <script src="../js/initHomePage.js"></script>
 <script src="../js/slider.js"></script>
 <script src="../js/searchbar.js"></script>
+<script src="../js/add_item_quantity.js"></script>
 </body>
 </html>
