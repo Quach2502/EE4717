@@ -10,6 +10,7 @@
         <a href="#about">About us</a>
         <a href="#feedback">Feedback</a>
         <?php
+        include "class/InfoCartItem.php";
         if(!isset($_SESSION)){
             session_start();
         }

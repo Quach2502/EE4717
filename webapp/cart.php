@@ -62,6 +62,11 @@
 </head>
 
 <body>
+<?php
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+?>
 	<!--    Navigation bar -->
 	<header id="">
 		<?php
@@ -74,8 +79,7 @@
 			<?php
 
 
-        include "./functions/dbconnect.php";
-
+        include "functions/dbconnect.php";
         if(!isset($_SESSION['cart'])){
         	$_SESSION['cart'] = array();
         }
@@ -86,7 +90,7 @@
         $username = $_SESSION['valid_user'];
         $query = "SELECT * FROM `user` WHERE `username` = '{$username}'";
 		$result = $db->query($query);
-		while($row = mysqi_fetch_array($result)) {
+		while($row = $result->fetch_assoc()) {
 			$email =  $row['email'];
 			$fullname =  $row['fullname'];
 			$handphone =  $row['handphone'];
@@ -100,7 +104,7 @@
         // print_r($_SESSION['cart']);
         $num_items_cart = count($_SESSION['cart']);
         echo $num_items_cart;
-        var_dump($_SESSION['cart']);
+//        var_dump($_SESSION['cart']);
         if($num_items_cart > 0){
         	$total = 0;
         	echo "<table border = '0'><thead>

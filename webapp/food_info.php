@@ -55,15 +55,23 @@
 </style> 
 </head>
 <body>
+<?php
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+?>
+
     <header id="">
         <?php
         include "templates/navbar.php";
+
         ?>
     </header>
 	<div class = "wrapper">
 		<?php
 
-		include "./functions/dbconnect.php";		
+		include "functions/dbconnect.php";
+
 		$description ='Description here';
 
 		$foodName = 'Name here';
@@ -118,6 +126,7 @@
 		echo '<div id = "food_price" value="'.$price.'">'.$price.'</div>';
 
 		echo '<button type="button" id ="order_init">Order Now!</button><br>';
+
 		echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
 		echo	'<input name="foodid" type="hidden" value='.$foodId.'>';
 		echo	'<input name="foodname" type="hidden" value='.$foodName.'>';?>
