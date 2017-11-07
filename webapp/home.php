@@ -14,6 +14,9 @@
 <!--    Navigation bar -->
 <header id="">
     <?php
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
+    error_reporting(-1);
         include "templates/navbar.php";
     ?>
 </header>
@@ -65,8 +68,37 @@
         <section id = "food-thumbnail">
         <?php
 
-        include "functions/food_query.php";
+        $userid = isset($_SESSION['valid_user'])? $_SESSION['valid_user'] : '';
+        echo '<input type="hidden" id ="sessionid" value ="'.$userid.'">';
+        $description ='Description here';
+        $foodName = 'Name here';
+        $price = 'Price here';
+        $imageLink = '../asset/error.jpg';
+        $restaurant = 'Restaurant here';
+        $category = 'Category here';
+        if(isset($_POST['add_to_cart'])) {
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = array();
+            }
+            echo $_SESSION['cart'];
+            $subtotal = $_POST['subtotal'];
+            $quantity = $_POST['quantity'];
+            $foodId = $_POST['foodid'];
+            $name = $_POST['foodname'];
+            if (isset($_SESSION['cart'][$foodId]) || array_key_exists($foodId, $_SESSION['cart'])) {
+                $_SESSION['cart'][$foodId]->quantity += $quantity;
+                $_SESSION['cart'][$foodId]->subtotal += $subtotal;
+            } else {
 
+                $infoCartItem = new InfoCartItem();
+                $infoCartItem->quantity = $quantity;
+                $infoCartItem->subtotal = $subtotal;
+                $infoCartItem->name = $name;
+                $_SESSION['cart'][$foodId] = $infoCartItem;
+            }
+
+        }
+        include "functions/food_query.php";
         for ($i=0; $i<$num_result; $i++){
             $row = $result->fetch_assoc();
             $foodId = $row['foodid'];
@@ -96,15 +128,13 @@
                             echo '<div class="center">';
                             echo '<div class="input-group">';
                                 echo '<span class="input-group-btn">';
-                                    echo '<button id="add-btn-'.$foodId.'" type="button" class="btn btn-success" onclick="add(\'add-btn-'.$foodId.
-                                        '\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">';
+                                    echo '<button id="add-btn-'.$foodId.'" type="button" class="btn btn-success" onclick="add('.$foodId.')">';
                                         echo '<span class="glyphicon glyphicon-plus"></span>';
                                     echo ' </button>';
                                 echo '</span>';
 
                                 echo '<span class="input-group-btn">';
-                                    echo '<button id = "minus-btn-'.$foodId.'" type="button" class="btn btn-danger" onclick="minus(\'add-btn-'.$foodId.
-                                    '\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">';
+                                    echo '<button id = "minus-btn-'.$foodId.'" type="button" class="btn btn-danger" onclick="minus('.$foodId.')">';
                                         echo '<span class="glyphicon glyphicon-minus"></span>';
                                     echo '</button>';
                                 echo ' </span>';
@@ -113,19 +143,30 @@
 
                                 echo '<span class="input-group-btn">';
                                     echo '<button id="addcart-btn-'.$foodId.'" type="button" class="btn btn-danger" 
-                                                            onclick = "addtocart(\'add-btn-'.$foodId.'\', \'minus-btn-'.$foodId.'\', \'input-quantity-'.$foodId.'\')">Add to cart</button>';
+                                                            onclick = "addtocart('.$foodId.')">Add to cart</button>';
                                 echo '</span>';
                             echo '</div>';
                             echo '</div>';
                         echo "</div>";
+
+                    echo "<form action='food_info.php' method='post'>";
+                    echo "<input name='foodid' value='$foodId' hidden>";
+                    echo "</form>";
+
+                    echo "<form id = 'addcart-form-".$foodId."' action= 'home.php' method='post' onSubmit='return formValidate()' >";
+                    echo '<input name="foodid" hidden value='.$foodId.'>';
+                    echo '<input name="foodname" hidden value='.$foodName.'>';
+                    echo '<input id="quantity-'.$foodId.'" name="quantity" type="number" value=0 hidden>';
+                    echo '<input id="subtotal-'.$foodId.'" name="subtotal" type="number" value=0 hidden>';
+                    echo '<input id="foodprice-'.$foodId.'" value='.$foodPrice.' hidden>';
+                    echo '<input id ="add_to_cart" name ="add_to_cart" hidden>';
+                    echo "</form>";
+
                 echo "</div>";
 
-            echo "<form action='food_info.php' method='post'>";
-                echo "<input name='foodid' value='$foodId' hidden>";
-            echo "</form>";
 
 
-                if ($i %5 == 4){
+            if ($i %5 == 4){
                     echo "</div>";
                 }
             }
