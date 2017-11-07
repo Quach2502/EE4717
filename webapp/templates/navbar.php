@@ -5,11 +5,11 @@
     </div>
 
     <div class = "pagelink">
-        <a href="#food">Food</a>
-        <a href="#search">Search</a>
+        <a href="home.php">Home</a>
+        <a href="search.php">Search</a>
         <a href="#about">About us</a>
         <a href="#feedback">Feedback</a>
-        <a href="#account">My Account</a>
+
         <?php
         if(!isset($_SESSION)){
             session_start();
@@ -20,6 +20,7 @@
             echo '<a href="logout.php">Logout</a>';
         }else{
             echo "<a href='login.php'>Login</a>";
+            echo "<a href='#account'>My Account</a>";
         }
         ?>
     </div>

@@ -2,6 +2,7 @@
 <head>
 	<script type="text/javascript" src = "../js/utilsCartPage.js"></script>
 	<script type ="text/javascript" src = "../js/initCartPage.js"></script>
+    <link rel="stylesheet" href="../css/home.css">
 	<style>
 	html{
 		max_width: 90%;
@@ -59,41 +60,19 @@
 	}
 </style>
 </head>
+
 <body>
 	<!--    Navigation bar -->
 	<header id="">
-		<nav class="display">
-			<a href="#food">Food</a>
-			<a href="#search">Search</a>
-			<a href="#about">About us</a>
-			<a href="#feedback">Feedback</a>
-			<?php
+		<?php
+            include "templates/navbar.php";
+        ?>
+    </header>
 
-			include "class/InfoCartItem.php";
-
-			if(!isset($_SESSION)){
-
-			    session_start();
-
-			}
-			if(isset($_SESSION['valid_user'])){
-				echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
-				echo '<a href="cart.php">My Cart</a>';
-				echo '<a href="logout.php">Logout</a>';
-			}else{    
-				echo "<a href='login.php'>Login</a>";
-			}
-			?>
-		</nav>
-
+    <main>
 		<div class = "content-wrap">
 			<?php
-        /**
-         * Created by IntelliJ IDEA.
-         * User: long
-         * Date: 30/10/17
-         * Time: 4:30 PM
-         */
+
 
         include "./functions/dbconnect.php";
 
@@ -107,7 +86,7 @@
         $username = $_SESSION['valid_user'];
         $query = "SELECT * FROM `user` WHERE `username` = '{$username}'";
 		$result = $db->query($query);
-		while($row = mysqli_fetch_array($result)) {
+		while($row = mysqi_fetch_array($result)) {
 			$email =  $row['email'];
 			$fullname =  $row['fullname'];
 			$handphone =  $row['handphone'];
@@ -229,6 +208,7 @@
 
         ?>
     </div>
-</header>
+    </main>
+
 </body>
 </html>

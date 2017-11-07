@@ -1,5 +1,6 @@
 <html>
 <head>
+    <link rel="stylesheet" href="../css/home.css">
 	<style>
 	html{
 		max_width: 90%;
@@ -57,24 +58,11 @@
 <body>
 	<!--    Navigation bar -->
 	<header id="">
-		<nav class="display">
-			<a href="#food">Food</a>
-			<a href="#search">Search</a>
-			<a href="#about">About us</a>
-			<a href="#feedback">Feedback</a>
-			<?php
-			if(!isset($_SESSION)){
-				session_start();
-			}
-			if(isset($_SESSION['valid_user'])){
-				echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
-				echo '<a href="cart.php">My Cart</a>';
-				echo '<a href="logout.php">Logout</a>';
-			}else{    
-				echo "<a href='login.php'>Login</a>";
-			}
-			?>
-		</nav>
+        <header id="">
+            <?php
+            include "templates/navbar.php";
+            ?>
+        </header>
 
 		<div class = "content-wrap">
 			<?php

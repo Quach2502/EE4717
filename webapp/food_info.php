@@ -3,6 +3,7 @@
 <head>
 	<script type="text/javascript" src = "../js/utilsFoodPage.js"></script>
 	<script type ="text/javascript" src = "../js/initFoodPage.js"></script>
+    <link rel="stylesheet" href="../css/home.css">
 	<title>Food Product</title>
 	<meta charset = "utf-8">
 	<style>
@@ -54,26 +55,12 @@
 </style> 
 </head>
 <body>
-	<div class = "wrapper">  
-		<header>
-			<nav class="display">
-				<a href="#food">Food</a>
-				<a href="#search">Search</a>
-				<a href="#about">About us</a>
-				<a href="#feedback">Feedback</a>
-				<?php
-				include "class/InfoCartItem.php";
-				session_start();
-				if(isset($_SESSION['valid_user'])){
-					echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
-					echo '<a href="cart.php">My Cart</a>';
-					echo '<a href="logout.php">Logout</a>';
-				}else{    
-					echo "<a href='login.php'>Login</a>";
-				}
-				?>
-			</nav>
-		</header>
+    <header id="">
+        <?php
+        include "templates/navbar.php";
+        ?>
+    </header>
+	<div class = "wrapper">
 		<?php
 
 		include "./functions/dbconnect.php";		

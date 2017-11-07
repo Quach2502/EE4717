@@ -3,6 +3,7 @@
     <!-- <script type="text/javascript" src = "../js/utilsLoginPage.js"></script>
     <script type ="text/javascript" src = "../js/initLogin.js"></script> -->
     <link rel="stylesheet" href="../css/login_form.css">
+    <link rel="stylesheet" href="../css/home.css">
     <style>
     html{
         max_width: 90%;
@@ -35,23 +36,12 @@
 </head>
 <body>
     <!--    Navigation bar -->
-    <header id="">
-        <nav class="display">
-            <a href="#food">Food</a>
-            <a href="#search">Search</a>
-            <a href="#about">About us</a>
+
+        <header id="">
             <?php
-                include "class/InfoCartItem.php";
-                session_start();
-                if(isset($_SESSION['valid_user'])){
-                    echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
-                    echo '<a href="cart.php">My Cart</a>';
-                    echo '<a href="logout.php">Logout</a>';
-                }else{    
-                    echo "<a href='login.php'>Login</a>";
-                }
-                ?>
-        </nav>
+            include "templates/navbar.php";
+            ?>
+        </header>
 
         <div class = "content-wrap">
             <div class ="login-form">
