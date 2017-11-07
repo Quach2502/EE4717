@@ -2,9 +2,10 @@
 <html lang = "en">
 <head>
 	<link rel="stylesheet" href="../css/modal.css">
+	<link rel="stylesheet" href="../css/table.css">
 	<script type="text/javascript" src = "../js/utilsUserInfoPage.js"></script>
 	<script type ="text/javascript" src = "../js/initUserInfoPage.js"></script>
-    <link rel="stylesheet" href="../css/home.css">
+	<link rel="stylesheet" href="../css/home.css">
 	<title>Food Product</title>
 	<meta charset = "utf-8">
 	<style>
@@ -28,10 +29,6 @@
 		width: 100%;
 		height:100%;
 	}
-	.error{
-		color: rgb(255,0,0);
-		display: none;
-	} 
 	#rightcolumn { 
 		float: left;
 		text-align:center;
@@ -39,48 +36,23 @@
 		height:70%;
 		background-color: rgb(245,245,220);
 	}
-	nav {
-		text-align: center;
-		background: rgba(10, 14, 21, 0.58); 
+	table{
+		padding: 20px;
 	}
-	nav a {
-		display: inline-block;
-		padding: 15px 20px;
-		text-decoration: none;
-		text-transform: uppercase;
-		font-weight: 700;
-		color: white;
+	table input{
+		width:100%;
+		padding : 5px;
 	}
-
-	header{
-		background-color: rgb(210,180,140); 	
-		height:30%;
-	}
-
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 100%;
-        border: 1px solid #ddd;
-    }
-
-    th, td {
-        border: none;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even){background-color: #f2f2f2}
 
 </style> 
 </head>
 <body>
 	<div class = "wrapper">
-        <header id="">
-            <?php
-            include "templates/navbar.php";
-            ?>
-        </header>
+		<header id="">
+			<?php
+			include "templates/navbar.php";
+			?>
+		</header>
 		<?php
 		include "functions/dbconnect.php";
 		if(!isset($_SESSION['valid_user'])){
@@ -111,6 +83,11 @@
 		echo 	'<div id = "info">';
 		echo '<form action="functions/update_info.php" method ="post" onSubmit ="return formInfoValidate()">';
 		echo 		'<table>';
+		echo '<colgroup>';
+		echo '<col span="1" style="width: 50%;">';
+		echo '<col span="1" style="width: 35%;">';
+		echo '<col span="1" style="width: 15%;">';
+		echo '</colgroup>';
 		echo 			'<tr>';
 		echo 				'<td>Fullname*</td>';
 		echo 				'<td><input type="text" name ="fullname" id ="fullname" value="'.$fullname.'"></td>';
@@ -130,11 +107,8 @@
 		echo 				'<td>Address (will be used as a default shipping address)</td>';
 		echo 				'<td><input type="text" name="address" id ="address" value="'.$address.'"></td>';
 		echo 			'</tr>';
-		echo 			'<tr>';
-		echo 				'<td></td>';
-		echo 				'<td><button type="submit" id ="save_info" style="float:left;">Save Now</button></td>';
-		echo 			'</tr>';
 		echo 		'</table>';
+		echo 				'<button type="submit" id ="save_new_psw" style="margin:auto;padding:5px;">Save Now</button>';
 		echo '</form>';
 		echo 	'</div>';
 // -------------------------------------------------------------------------------------------------------
@@ -142,6 +116,11 @@
 		echo 	'<div id = "change_psw" style="display:none;">';
 		echo '<form action="functions/update_psw.php" method ="post" onSubmit ="return formPswValidate()">';
 		echo 		'<table>';
+		echo '<colgroup>';
+		echo '<col span="1" style="width: 50%;">';
+		echo '<col span="1" style="width: 35%;">';
+		echo '<col span="1" style="width: 15%;">';
+		echo '</colgroup>';
 		echo 			'<tr>';
 		echo 				'<td>Current Password</td>';
 		echo 				'<td><input type="password" id ="pendpsw" ></td>';
@@ -157,7 +136,7 @@
 		echo 			'</tr>';
 		echo 			'<tr>';
 		echo 				'<td></td>';
-		echo 				'<td><button type="submit" id ="save_new_psw" style="float:left;">Change Password</button></td>';
+		echo 				'<td><button type="submit" id ="save_new_psw" style="float:left;padding:5px;">Change Password</button></td>';
 		echo 			'</tr>';
 		echo 		'</table>';
 		echo '</form>';
