@@ -181,7 +181,7 @@
 				$orderIdForDetails = $row['orderid'];
 				$sqlDetails = "SELECT * FROM `orderdetails` WHERE `orderid` = '$orderIdForDetails'";
 				$resultDetails = $db->query($sqlDetails);
-				echo '<div id="modal_'.$orderId.'" class="modal">';
+				echo '<div id="modal_'.$orderIdForDetails.'" class="modal">';
 				echo "<span onclick='document.getElementById(\"modal_".$orderId."\").style.display=\"none\"' class=\"close\">×</span>";
 				echo 	'<table class="modal-content animate" border = "1">';
 				echo 		"<thead>";
