@@ -22,9 +22,6 @@
 
 /* The Close Button (x) */
 .close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
     color: #000;
     font-size: 40px;
     font-weight: bold;

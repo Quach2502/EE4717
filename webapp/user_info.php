@@ -182,8 +182,8 @@
 				$sqlDetails = "SELECT * FROM `orderdetails` WHERE `orderid` = '$orderIdForDetails'";
 				$resultDetails = $db->query($sqlDetails);
 				echo '<div id="modal_'.$orderIdForDetails.'" class="modal">';
-				echo "<span onclick='document.getElementById(\"modal_".$orderIdForDetails."\").style.display=\"none\"' class=\"close\">×</span>";
-				echo 	'<table class="modal-content animate" border = "1">';
+				echo 	'<div class="modal-content animate" border = "1">';
+				echo '<table border ="1">';
 				echo 		"<thead>";
 				echo 			"<tr>";
 				echo 				"<th>Food Name</th>";
@@ -199,6 +199,8 @@
 					echo 	'</tr>';
 				}
 				echo 	'</table>';
+				echo "<span onclick='document.getElementById(\"modal_".$orderIdForDetails."\").style.display=\"none\"' class=\"close\"><button type='button'>Go back</button></span>";
+				echo '</div>';
 				echo '</div>';
 			}
 		}
