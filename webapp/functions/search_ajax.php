@@ -28,6 +28,7 @@ if(isset($result)){
     $num_result = mysqli_num_rows($result);
 }
 if ($num_result == 0){
+    $search_result = new stdClass();
     $search_result->name ='No items found';
     $search_result->foodid=-1;
     $array[] =$search_result;
