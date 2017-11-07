@@ -17,11 +17,17 @@ function showQuantity(event){
 
 function formValidate(){
 	var quantity = document.getElementById('quantity').value;
-	if(quantity > 0){
-		return true;
+	if(document.getElementById('sessionid').value !== ''){
+		if(quantity > 0){
+			return true;
+		}
+		else{
+			alert("You should order more than 0 ^_^");
+			return false;
+		}
 	}
 	else{
-		alert("You should order more than 0 ^_^");
+		alert('You need to log in first before ordering.');
 		return false;
 	}
 }

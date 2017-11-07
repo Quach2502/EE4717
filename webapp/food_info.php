@@ -64,16 +64,14 @@ error_reporting(-1);
     <header id="">
         <?php
         include "templates/navbar.php";
-
         ?>
     </header>
 	<div class = "wrapper">
 		<?php
-
 		include "functions/dbconnect.php";
-
+		$userid = isset($_SESSION['valid_user'])? $_SESSION['valid_user'] : '';
+		echo '<input type="hidden" id ="sessionid" value ="'.$userid.'">';
 		$description ='Description here';
-
 		$foodName = 'Name here';
 		$price = 'Price here';
 		$imageLink = '../asset/error.jpg';
