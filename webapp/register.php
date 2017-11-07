@@ -34,7 +34,7 @@
 			if (!$result) {
 				echo "There is something wrong now with database. Please try again later!<br>";
 				echo "<a href='home.php'>Go back to home page.</a><br>";
-				echo "<a href='registration.html'>Register again.</a>";
+				echo "<a href='registration.php'>Register again.</a>";
 			}
 			else{
 				echo "Sucessfully. You can <a href='login.php'>log in </a>now<br>";

@@ -6,9 +6,8 @@
 
     <div class = "pagelink">
         <a href="home.php">Home</a>
-        <a href="search.php">Search</a>
         <a href="#about">About us</a>
-        <a href="#feedback">Feedback</a>
+        <a href="feedback.php">Feedback</a>
         <?php
         include "class/InfoCartItem.php";
         if(!isset($_SESSION)){
