@@ -57,12 +57,7 @@
                 <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>
                 <a class="next" onclick="sliderPlus(1)">&#10095;</a>
             </div>
-<!---->
-<!--            <div style="text-align:center">-->
-<!--                <span class="dot" onclick="currentSlide(1)"></span>-->
-<!--                <span class="dot" onclick="currentSlide(2)"></span>-->
-<!--                <span class="dot" onclick="currentSlide(3)"></span>-->
-<!--            </div>-->
+
         </section>
 
         <section id = "food-thumbnail">
@@ -120,8 +115,6 @@
                             echo "<h3> Food Name: ".$foodName."</h3>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
                             echo "<h1> Price: S$".$foodPrice."</h1>";
-//                            echo "<button>Order now! </button>";
-
 
 
                             echo '<div class="center">';
@@ -162,8 +155,6 @@
                     echo "</form>";
 
                 echo "</div>";
-
-
 
             if ($i %5 == 4){
                     echo "</div>";
