@@ -77,10 +77,12 @@ error_reporting(-1);
     echo '<div id ="leftcolumn" class="col two-col">';
     echo "<img id ='food_image' src = " . $imageLink . "></div>";
     echo '<div id = "rightcolumn" class="col two-col">';
+    echo '<div id = "food_detail">';
     echo '<div id = "food_name">' . $foodName . '</div>';
     echo '<div id = "food_price" >Price: S$' . $price . '</div>';
     echo '<input hidden id="price_value" value ="'. $price .'">';
     echo '<div id = "food_category"><div class="category-title">Category</div>' . $category . '</div>';
+    echo '<div id = "food_restaurant"><div class="restaurant-title">Restaurant</div>' . $restaurant . '</div>';
     echo '<div id = "food_description"><div class="description-title">Description</div>' . $description . '</div>';
 
 
@@ -89,6 +91,7 @@ error_reporting(-1);
     echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
     echo '<input name="foodid" type="hidden" value=' . $foodId . '>';
     echo '<input name="foodname" type="hidden" value=' . $foodName . '>';
+    echo '</div>';
     ?>
     <input id="add_to_cart" name="add_to_cart" value="Add To Cart" hidden>
     <input id="subtotal" name="subtotal" type="text" value="0" hidden>
@@ -130,6 +133,7 @@ error_reporting(-1);
         </div>
 
     </div>
+
 
     </form>
 </div>
