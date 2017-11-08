@@ -6,7 +6,7 @@
 
     <div class = "pagelink">
         <a href="home.php">Home</a>
-        <a href="#about">About us</a>
+        <a href="about.php">About us</a>
         <a href="feedback.php">Feedback</a>
         <?php
         include "class/InfoCartItem.php";
