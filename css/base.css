@@ -1,0 +1,47 @@
+html{
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0 auto;
+    max-width: 100%;
+
+}
+
+
+/********************************************************/
+.content-wrap{
+
+    /*max-width: 1500px;*/
+    margin: 0 auto;
+    /*display: flex;*/
+    /*align-items: center;*/
+
+    text-align: center;
+}
+
+
+.col{
+    float: left;
+    overflow: hidden;
+    /*display: table-cell;*/
+    vertical-align: middle;
+    text-align: center;
+}
+.five-col {
+    width: 20%;
+}
+
+.four-col {
+    width: 25%;
+}
+
+.col:after, .col:before{
+    clear:both;
+    content: "";
+    /*display: table;*/
+}

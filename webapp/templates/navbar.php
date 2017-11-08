@@ -1,5 +1,6 @@
 
 <nav>
+
     <div class = "logo">
 
     </div>
@@ -93,4 +94,5 @@
 
 </nav>
 <script src="../js/searchbar.js"></script>
+
 

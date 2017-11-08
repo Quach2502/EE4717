@@ -2,7 +2,8 @@
 <head>
 	<script type="text/javascript" src = "../js/utilsCartPage.js"></script>
 	<script type ="text/javascript" src = "../js/initCartPage.js"></script>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/table.css">
 
 </head>

@@ -3,62 +3,11 @@
 <head>
     <script type="text/javascript" src="../js/utilsFoodPage.js"></script>
     <script type="text/javascript" src="../js/initFoodPage.js"></script>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/add_item_quantity.css">
     <title>Food Product</title>
     <meta charset="utf-8">
-    <style>
-        html {
-            height: 100%;
-            width: 100%;
-        }
-
-        .wrapper {
-            height: 800px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        #leftcolumn {
-            float: left;
-            width: 50%;
-            height: 70%;
-            background-color: rgb(226, 210, 176);
-        }
-
-        #food_image {
-            width: 100%;
-            height: 100%;
-        }
-
-        #rightcolumn {
-            float: left;
-            text-align: center;
-            width: 50%;
-            height: 70%;
-            background-color: rgb(245, 245, 220);
-        }
-
-        nav {
-            text-align: center;
-            background: rgba(10, 14, 21, 0.58);
-        }
-
-        nav a {
-            display: inline-block;
-            padding: 15px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: white;
-        }
-
-        header {
-            background-color: rgb(210, 180, 140);
-            height: 30%;
-        }
-
-    </style>
 </head>
 <body>
 <?php

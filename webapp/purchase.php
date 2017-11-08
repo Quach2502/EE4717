@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
 	<style>
 	html{
 		max_width: 90%;
