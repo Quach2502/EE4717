@@ -1,5 +1,6 @@
 html{
     box-sizing: border-box;
+    height:100%;
 }
 
 *, *:before, *:after{
@@ -8,14 +9,24 @@ html{
 
 body{
     margin: 0 auto;
-    max-width: 100%;
+    max-width: 90%;
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
 
 }
-
+/*.wrapper {*/
+    /*min-height: 100%;*/
+    /*height: auto !important;*/
+    /*height: 100%;*/
+    /*margin: 0 auto -55px; !* negative of footer height *!*/
+/*}*/
+/*.bumper { height: 55px; } !* footer height *!*/
+/*footer { height: 55px; width: 100%; }*/
 
 /********************************************************/
 .content-wrap{
-
+   /* negative of footer height */
     /*max-width: 1500px;*/
     margin: 0 auto;
     /*display: flex;*/
@@ -44,4 +55,43 @@ body{
     clear:both;
     content: "";
     /*display: table;*/
+}
+
+.error{
+    color: rgb(255,0,0);
+    display: none;
+}
+.content-wrap:after{
+    clear:both;
+}
+.site-footer{
+    display: block;
+    position: absolute;
+    /*bottom: 0;*/
+    width: 100%;
+    margin-top: 1000px;
+
+    /*position: fixed;*/
+    bottom:0px;
+
+}
+.site-footer .content{
+    color: #BBBBBB;
+    font-size: 1em;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0px;
+    font-weight: 500;
+    background: #111111;
+
+}
+
+/*footer{*/
+    /*float:top;*/
+/*}*/
+
+.space{
+    height:300px;
+    width:100%;
 }
