@@ -49,7 +49,7 @@
             <div class = "slideshow-container">
                 <?php
                     include "functions/dbconnect.php";
-                    $topfood_query = "SELECT COUNT(quantity), foodid FROM orderdetails GROUP BY foodid ORDER BY COUNT(quantity) DESC LIMIT 8";
+                    $topfood_query = "SELECT SUM(quantity), foodid FROM orderdetails GROUP BY foodid ORDER BY SUM(quantity) DESC LIMIT 8";
                     $topfood_result = $db->query($topfood_query);
                     if(isset($topfood_result )) {
                         $num_topfood_result = mysqli_num_rows($topfood_result );

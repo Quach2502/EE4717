@@ -80,6 +80,10 @@
     padding: 8px 12px;
     position: absolute;
     bottom: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
     width: 100%;
     text-align: center;
     font-weight: bold;
