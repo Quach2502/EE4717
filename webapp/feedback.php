@@ -1,6 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/feedback.css">
 <!--    <link rel="stylesheet" href="../css/add_item_quantity.css">-->
 </head>

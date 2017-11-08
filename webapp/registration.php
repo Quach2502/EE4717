@@ -2,8 +2,9 @@
 <head>
     <script type="text/javascript" src = "../js/registrationValidate.js"></script>
     <script type ="text/javascript" src = "../js/initRegistration.js"></script>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/registration_form.css">
-    <link rel="stylesheet" href="../css/home.css">
     <style>
     html{
         max_width: 90%;
