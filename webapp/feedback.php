@@ -15,7 +15,8 @@
     include "templates/navbar.php";
     ?>
 
-    <div class="container">
+    <div id="feedback-form-input" class="container">
+        <h1>Feedback</h1>
         <form action="feedback_success.php" method="POST">
 
             <label><b>Your Name*</b><span class = "error" id ="errorName">

@@ -27,9 +27,9 @@
 <!--            <img src ="../asset/theme.jpg">-->
             <div class="hero-image">
                 <div class="hero-text">
-                    <h1>Food247 Service</h1>
-                    <p>Best price online food service</p>
-                    <button>Explore now!</button>
+                    <h1>247Food Service</h1>
+                    <p>The most affordable online food service in Singapore</p>
+                    <button><a href ="#food-thumbnail">Explore now</a></button>
                 </div>
             </div>
         </section>
@@ -54,8 +54,8 @@
                     }
                 ?>
 
-                <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>
-                <a class="next" onclick="sliderPlus(1)">&#10095;</a>
+<!--                <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>-->
+<!--                <a class="next" onclick="next()">&#10095;</a>-->
             </div>
 
         </section>
@@ -112,13 +112,14 @@
                             echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
                             echo "<span class='tag'>Promoted</span>";
                             echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\" onclick = \"tofoodinfo($foodId)\"></div>";
-                            echo "<h3> Food Name: ".$foodName."</h3>";
+                            echo "<span class='food-name'> Food Name: ".$foodName."</span>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
-                            echo "<h1> Price: S$".$foodPrice."</h1>";
+
 
 
                             echo '<div class="center">';
                             echo '<div class="input-group">';
+                                echo "<span class='food-price'>S$".$foodPrice."</span>";
                                 echo '<span class="input-group-btn">';
                                     echo '<button id="add-btn-'.$foodId.'" type="button" class="btn btn-success" onclick="add('.$foodId.')">';
                                         echo '<span class="glyphicon glyphicon-plus"></span>';

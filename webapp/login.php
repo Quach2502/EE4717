@@ -18,7 +18,7 @@
         <div class ="login-form">
             <form action="functions/authmain.php" method="post">
               <div class="imgcontainer">
-                <img src="../asset/avt.png" alt="Avatar" class="avatar" style="height:100%;width: 100%;">
+                <img src="../asset/avt.png" alt="Avatar" class="avatar" style="">
             </div>
 
             <div class="container">
@@ -33,9 +33,11 @@
                     ?>
                     <button type="submit" id="loginbtn">Login</button>
                 </div>
-                <div class="container" style="background-color:#f1f1f1">
+                <div class="container" style="background-color:#f1f1f1;">
+                    <div style="vertical-align: middle; height: 16px;">
                     <span class="psw">Forgot <a href="#">password?</a></span>
                     <span style="float:left;"><a href="registration.php">Register</a></span>
+                    </div>
                 </div>
             </form>
 

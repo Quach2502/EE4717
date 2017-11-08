@@ -30,13 +30,12 @@ button:hover {
 
 .imgcontainer {
     text-align: center;
-    height: 40%;
-    width: 40%;
-    margin: auto;
+    margin: 20px auto;
 }
 
 img.avatar {
-    width: 40%;
+    width: 30%;
+    height: auto;
     border-radius: 50%;
 }
 
@@ -51,6 +50,10 @@ img.avatar {
 
 span.psw {
     float: right;
+}
+
+span{
+    vertical-align: middle;
 }
 
 /* Change styles for span and cancel button on extra small screens */
