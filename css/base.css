@@ -52,6 +52,10 @@ body{
     width: 25%;
 }
 
+.two-col{
+    width: 50%;
+}
+
 .col:after, .col:before{
     clear:both;
     content: "";

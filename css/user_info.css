@@ -1,0 +1,40 @@
+.title{
+    font-size: 2.5em;
+    /*font-family: 'museo_sans700', sans-serif;*/
+    margin:40px auto;
+    text-align: center;
+
+}
+.wrapper{
+    height:800px;
+    width:100%;
+}
+#leftcolumn {
+    float: left;
+    width: 20%;
+    height: 100%;
+    text-align:center;
+    background-color: rgba(166, 168, 167, 0.85);
+}
+#food_image {
+    width: 100%;
+    height:100%;
+}
+#rightcolumn {
+    float: left;
+    text-align:center;
+    width: 80%;
+    height:100%;
+    background-color: rgb(245,245,220);
+}
+table{
+    padding: 20px;
+}
+table input{
+    width:100%;
+    padding : 5px;
+}
+
+.content{
+    margin: 50px
+}

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/add_item_quantity.css">
     <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/food_info.css">
     <title>Food Product</title>
     <meta charset="utf-8">
 </head>
@@ -23,7 +24,9 @@ error_reporting(-1);
 </header>
 
 <main>
+    <div class="content-wrap">
 <div class="wrapper">
+    <div class="title">Food Info</div>
     <?php
     include "functions/dbconnect.php";
     $userid = isset($_SESSION['valid_user']) ? $_SESSION['valid_user'] : '';
@@ -71,22 +74,24 @@ error_reporting(-1);
 
         }
     }
-    echo '<div id ="leftcolumn">';
+    echo '<div id ="leftcolumn" class="col two-col">';
     echo "<img id ='food_image' src = " . $imageLink . "></div>";
-    echo '<div id = "rightcolumn">';
+    echo '<div id = "rightcolumn" class="col two-col">';
     echo '<div id = "food_name">' . $foodName . '</div>';
-    echo '<div id = "food_category">' . $category . '</div>';
-    echo '<div id = "food_description">' . $description . '</div>';
-    echo '<div id = "food_price" value="' . $price . '">' . $price . '</div>';
+    echo '<div id = "food_price" >Price: S$' . $price . '</div>';
+    echo '<input hidden id="price_value" value ="'. $price .'">';
+    echo '<div id = "food_category"><div class="category-title">Category</div>' . $category . '</div>';
+    echo '<div id = "food_description"><div class="description-title">Description</div>' . $description . '</div>';
+
 
 //    echo '<button type="button" id ="order_init">Order Now!</button><br>';
 
     echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
     echo '<input name="foodid" type="hidden" value=' . $foodId . '>';
     echo '<input name="foodname" type="hidden" value=' . $foodName . '>';
-    echo '<input id="add_to_cart" name="add_to_cart" value="Add To Cart" hidden>';
-
     ?>
+    <input id="add_to_cart" name="add_to_cart" value="Add To Cart" hidden>
+    <input id="subtotal" name="subtotal" type="text" value="0" hidden>
 
     <div id="getQuantity" style="display:none;"></div>
     <div class="center">
@@ -116,8 +121,11 @@ error_reporting(-1);
             </span>
 
             <span class="form-control">
-                <span class="text-bold">Subtotal: S$</span>
-                <span id="subtotalVal" class="text-bold" style="color:red">0</span>
+
+               <span class="text-bold">Subtotal: S$</span>
+                <?php
+                echo '<span id="subtotalVal" class="text-bold" style="color:red">'.$price.'</span>';
+                ?>
             </span>
         </div>
 
@@ -125,6 +133,7 @@ error_reporting(-1);
 
     </form>
 </div>
+    </div>
 </main>
 
 <?php

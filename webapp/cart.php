@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/table.css">
     <link rel="stylesheet" href="../css/footer.css">
-
+    <link rel="stylesheet" href="../css/cart.css">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
       <div class = "content-wrap">
          <?php
 
-
+         echo "<div class='title'>My cart</div>";
          include "functions/dbconnect.php";
          if(!isset($_SESSION['cart'])){
            $_SESSION['cart'] = array();
@@ -53,7 +53,8 @@
    $num_items_cart = count($_SESSION['cart']);
    // echo $num_items_cart;
 //        var_dump($_SESSION['cart']);
-   if($num_items_cart > 0){
+
+         if($num_items_cart > 0){
        $total = 0;
        echo "<table border = '0'><thead>
        <tr>
@@ -62,7 +63,8 @@
        <th>Subtotal</th>
        </tr>
        </thead>";
-       echo '<p><strong>Your current cart</strong></p><br>';
+
+//       echo '<p><strong>Your current cart</strong></p><br>';
        foreach($_SESSION['cart'] as $key=>$value){
           $qt = $value->quantity;
           $name = $value->name;
@@ -130,6 +132,8 @@
 
   }
   else{
+
+
    echo"<p>Your cart is empty</p></br>";
    if(isset($_GET['addOrderHistory'])){
       echo "You have ordered successfully. You can visit your <a href='user_info.php'>Order History</a> to check.";

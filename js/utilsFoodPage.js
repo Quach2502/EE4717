@@ -2,7 +2,7 @@ var minInputValue = 1;
 var maxInputValue = 100;
 
 function computeFoodPrice(){
-    var price = document.getElementById('food_price').innerHTML;
+    var price = document.getElementById('price_value').value;
     console.log("price", price);
     var quantity = document.getElementById('quantity').value;
     if(quantity <= 0){
