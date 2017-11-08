@@ -54,8 +54,8 @@
                     }
                 ?>
 
-                <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>
-                <a class="next" onclick="sliderPlus(1)">&#10095;</a>
+<!--                <a class="prev" onclick="sliderPlus(-1)">&#10094;</a>-->
+<!--                <a class="next" onclick="next()">&#10095;</a>-->
             </div>
 
         </section>
