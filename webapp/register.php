@@ -2,16 +2,17 @@
 <head>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 	<!--    Navigation bar -->
-	<header id="">
+
         <header id="">
             <?php
             include "templates/navbar.php";
             ?>
         </header>
-
+<main>
 		<div class = "content-wrap">
 			<?php
 			include "functions/dbconnect.php";
@@ -43,6 +44,9 @@
 			}
 			?>
 		</div>
-	</header>
+</main>
+    <?php
+    include "templates/footer.php";
+    ?>
 </body>
 </html>

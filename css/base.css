@@ -1,5 +1,6 @@
 html{
     box-sizing: border-box;
+    height:100%;
 }
 
 *, *:before, *:after{
@@ -9,18 +10,29 @@ html{
 body{
     margin: 0 auto;
     max-width: 100%;
+    position: relative;
+    padding-bottom: 6rem;
+    min-height: 100%;
 
 }
-
+/*.wrapper {*/
+    /*min-height: 100%;*/
+    /*height: auto !important;*/
+    /*height: 100%;*/
+    /*margin: 0 auto -55px; !* negative of footer height *!*/
+/*}*/
+/*.bumper { height: 55px; } !* footer height *!*/
+/*footer { height: 55px; width: 100%; }*/
 
 /********************************************************/
 .content-wrap{
-
+   /* negative of footer height */
     /*max-width: 1500px;*/
     margin: 0 auto;
+    margin-top: 110px;
     /*display: flex;*/
     /*align-items: center;*/
-
+    display: block;
     text-align: center;
 }
 
@@ -40,8 +52,25 @@ body{
     width: 25%;
 }
 
+.two-col{
+    width: 50%;
+}
+
 .col:after, .col:before{
     clear:both;
     content: "";
     /*display: table;*/
+}
+
+
+.row {
+    margin: auto;
+    clear: both;
+    height: 50%;
+}
+
+
+.error{
+    color: rgb(255,0,0);
+    display: none;
 }

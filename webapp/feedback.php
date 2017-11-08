@@ -3,7 +3,8 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/feedback.css">
-<!--    <link rel="stylesheet" href="../css/add_item_quantity.css">-->
+    <link rel="stylesheet" href="../css/footer.css">
+    <!--    <link rel="stylesheet" href="../css/add_item_quantity.css">-->
 </head>
 <body>
 <!--    Navigation bar -->
@@ -15,31 +16,40 @@
 
     include "templates/navbar.php";
     ?>
+</header>
+<main>
+    <div class="content-wrap">
+        <div class="content">
+            <div id="feedback-form-input" class="container">
+                <h1>Feedback</h1>
+                <form action="feedback_success.php" method="POST">
 
-    <div id="feedback-form-input" class="container">
-        <h1>Feedback</h1>
-        <form action="feedback_success.php" method="POST">
-
-            <label><b>Your Name*</b><span class = "error" id ="errorName">
+                    <label><b>Your Name*</b><span class="error" id="errorName">
                     Invalid!</span></label>
-            <input type="text" placeholder="Enter Your Name" id ="name" name="name" required>
+                    <input type="text" placeholder="Enter Your Name" id="name" name="name" required>
 
-            <label><b>Email*</b><span class = "error" id ="errorEmail">
+                    <label><b>Email*</b><span class="error" id="errorEmail">
                     Invalid!</span></label>
-            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
 
-            <label for="feedback">Your feedback</label>
-            <textarea id="feedback" name="feedback" placeholder="Write something.." style="height:200px"></textarea>
+                    <label for="feedback">Your feedback</label>
+                    <textarea id="feedback" name="feedback" placeholder="Write something.."
+                              style="height:200px"></textarea>
 
-            <input type="submit" value="Submit">
-        </form>
+                    <div style="text-align: center">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+
     </div>
 
-</header>
-
-<main>
-
 </main>
+
+<?php
+include "templates/footer.php";
+?>
 
 </body>
 </html>

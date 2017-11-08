@@ -1,10 +1,18 @@
 /**********************     Navigation bar      *******************/
 nav {
-    text-align: center;
-    background: rgba(10, 14, 21, 0.58);
-    z-index: 10;
-}
 
+
+}
+.navbar-wrapper{
+    text-align: center;
+    background: rgb(50, 50, 50);
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display:block;
+    padding-bottom: 15px;
+}
 nav a {
     display: inline-block;
     padding: 15px 20px;

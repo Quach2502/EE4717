@@ -13,8 +13,10 @@
     <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/food_thumbnail.css">
     <link rel="stylesheet" href="../css/add_item_quantity.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
+
 <!--    Navigation bar -->
 <header id="">
     <?php
@@ -27,6 +29,7 @@
 
 <main>
     <div class = "content-wrap">
+
         <section id="hero" class="hero-wrap">
 <!--            <img src ="../asset/theme.jpg">-->
             <div class="hero-image">
@@ -167,13 +170,25 @@
             }
 
         ?>
-        </section>
-    </div>
 
+
+        </section>
+
+    </div>
 </main>
+<!--<div class="space"></div>-->
+<?php
+include "templates/footer.php";
+?>
+
+
 <script src="../js/initHomePage.js"></script>
 <script src="../js/slider.js"></script>
 <script src="../js/searchbar.js"></script>
 <script src="../js/add_item_quantity.js"></script>
 </body>
+
+
+
 </html>
+

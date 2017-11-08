@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/registration_form.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <style>
     html{
         max_width: 90%;
@@ -42,7 +43,7 @@
         include "templates/navbar.php";
         ?>
     </header>
-
+<main>
     <div class = "content-wrap">
         <div class ="regis-form">
             <form action="./register.php" method ="post" id ="register-form" onSubmit="return formValidate()">
@@ -85,5 +86,9 @@
       </form>
   </div>
 </div>
+</main>
+    <?php
+    include "templates/footer.php";
+    ?>
 </body>
 </html>

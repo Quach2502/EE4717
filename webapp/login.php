@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/login_form.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!--    Navigation bar -->
@@ -15,7 +16,7 @@
         include "templates/navbar.php";
         ?>
     </header>
-
+<main>
     <div class = "content-wrap">
         <div class ="login-form">
             <form action="functions/authmain.php" method="post">
@@ -45,6 +46,10 @@
 
         </div>
     </div>
-</header>
+</main>
+
+    <?php
+    include "templates/footer.php";
+    ?>
 </body>
 </html>

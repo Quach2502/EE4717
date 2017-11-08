@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/about.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <!--    <link rel="stylesheet" href="../css/add_item_quantity.css">-->
 </head>
 <body>
@@ -18,6 +19,8 @@
 </header>
 
 <main>
+    <div class="content-wrap">
+        <div class="content">
     <h4>About us</h4>
     <span class="subhead">OUR STORY</span>
     <p>
@@ -29,8 +32,13 @@
         <br><br>
         Just visit us at <strong>247Food.com</strong>, browsing for your favorite food, click order and we will bring it to your doorstep.
     </p>
-
+    </div>
+    </div>
 </main>
+<?php
+include "templates/footer.php";
+?>
 
 </body>
 </html>
+

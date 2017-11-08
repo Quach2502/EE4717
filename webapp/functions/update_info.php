@@ -13,7 +13,7 @@ $address = mysqli_real_escape_string($db,$address);
 $sql = "UPDATE `user` SET `fullname`='{$fullname}',`email`='{$email}',`handphone`='{$handphone}',`address`='{$address}' WHERE `username`='{$username}'";
 $result = $db->query($sql);
 if($result){
-	header("location:../user_info.php");
+	header("location:../user_info.php?updateInfo=true;");
 // echo $username.' '.$fullname.' '.$email.' '.$handphone.' '.$address;
 }
 else {
