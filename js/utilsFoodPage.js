@@ -74,5 +74,8 @@ function resetBtn(){
 
 function addtocart() {
     computeFoodPrice();
-    document.getElementById('add_to_cart_form').submit();
+    if (formValidate()){
+        document.getElementById('add_to_cart_form').submit();
+    }
+
 }

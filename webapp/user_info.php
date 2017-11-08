@@ -3,10 +3,10 @@
 <head>
 	<link rel="stylesheet" href="../css/modal.css">
 	<link rel="stylesheet" href="../css/table.css">
-	<script type="text/javascript" src = "../js/utilsUserInfoPage.js"></script>
-	<script type ="text/javascript" src = "../js/initUserInfoPage.js"></script>
+
 	<link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/footer.css">
 
 	<title>Food Product</title>
 	<meta charset = "utf-8">
@@ -206,5 +206,12 @@
 		echo 	'</div>';
 		?>
 	</div>
+
+    <?php
+    include "templates/footer.php";
+    ?>
+
+    <script type="text/javascript" src = "../js/utilsUserInfoPage.js"></script>
+    <script type ="text/javascript" src = "../js/initUserInfoPage.js"></script>
 </body>
 </html>

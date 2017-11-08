@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script type="text/javascript" src="../js/utilsFoodPage.js"></script>
-    <script type="text/javascript" src="../js/initFoodPage.js"></script>
+
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/add_item_quantity.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <title>Food Product</title>
     <meta charset="utf-8">
 </head>
@@ -21,6 +21,8 @@ error_reporting(-1);
     include "templates/navbar.php";
     ?>
 </header>
+
+<main>
 <div class="wrapper">
     <?php
     include "functions/dbconnect.php";
@@ -81,9 +83,10 @@ error_reporting(-1);
 
     echo '<form  id = "add_to_cart_form" method ="post" onSubmit="return formValidate()" action="food_info.php">';
     echo '<input name="foodid" type="hidden" value=' . $foodId . '>';
-    echo '<input name="foodname" type="hidden" value=' . $foodName . '>'; ?>
-    <input id="add_to_cart" name="add_to_cart" value="Add To Cart" hidden>
-    <input id="subtotal" name="subtotal" type="text" value="0" hidden>
+    echo '<input name="foodname" type="hidden" value=' . $foodName . '>';
+    echo '<input id="add_to_cart" name="add_to_cart" value="Add To Cart" hidden>';
+
+    ?>
 
     <div id="getQuantity" style="display:none;"></div>
     <div class="center">
@@ -122,6 +125,13 @@ error_reporting(-1);
 
     </form>
 </div>
+</main>
 
+<?php
+include "templates/footer.php";
+?>
 </body>
+
+<script type="text/javascript" src="../js/utilsFoodPage.js"></script>
+<script type="text/javascript" src="../js/initFoodPage.js"></script>
 </html>

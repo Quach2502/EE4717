@@ -9,7 +9,7 @@ html{
 
 body{
     margin: 0 auto;
-    max-width: 90%;
+    max-width: 100%;
     position: relative;
     padding-bottom: 6rem;
     min-height: 100%;
@@ -29,9 +29,10 @@ body{
    /* negative of footer height */
     /*max-width: 1500px;*/
     margin: 0 auto;
+    margin-top: 110px;
     /*display: flex;*/
     /*align-items: center;*/
-
+    display: block;
     text-align: center;
 }
 
@@ -57,41 +58,15 @@ body{
     /*display: table;*/
 }
 
+
+.row {
+    margin: auto;
+    clear: both;
+    height: 50%;
+}
+
+
 .error{
     color: rgb(255,0,0);
     display: none;
-}
-.content-wrap:after{
-    clear:both;
-}
-.site-footer{
-    display: block;
-    position: absolute;
-    /*bottom: 0;*/
-    width: 100%;
-    margin-top: 1000px;
-
-    /*position: fixed;*/
-    bottom:0px;
-
-}
-.site-footer .content{
-    color: #BBBBBB;
-    font-size: 1em;
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px 0px;
-    font-weight: 500;
-    background: #111111;
-
-}
-
-/*footer{*/
-    /*float:top;*/
-/*}*/
-
-.space{
-    height:300px;
-    width:100%;
 }

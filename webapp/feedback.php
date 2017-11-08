@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/feedback.css">
+    <link rel="stylesheet" href="../css/footer.css">
 <!--    <link rel="stylesheet" href="../css/add_item_quantity.css">-->
 </head>
 <body>
@@ -40,6 +41,9 @@
 <main>
 
 </main>
+<?php
+include "templates/footer.php";
+?>
 
 </body>
 </html>

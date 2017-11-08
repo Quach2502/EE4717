@@ -1,6 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/footer.css">
 	<style>
 	html{
 		max_width: 90%;
@@ -62,6 +63,8 @@
         include "templates/navbar.php";
         ?>
     </header>
-
+    <?php
+    include "templates/footer.php";
+    ?>
 </body>
 </html>

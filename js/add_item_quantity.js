@@ -69,7 +69,9 @@ function addtocart(id){
     getIds(id);
     document.getElementById(quantityId).value=document.getElementById(inputQuantityId).value;
     computeFoodPrice();
-    document.getElementById(addcartFormId).submit();
+    if (formValidate()){
+        document.getElementById(addcartFormId).submit();
+    }
 }
 function tofoodinfo(id){
     getIds(id);

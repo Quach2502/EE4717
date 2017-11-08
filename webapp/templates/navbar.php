@@ -1,9 +1,7 @@
 
 <nav>
+    <div class = "navbar-wrapper">
 
-    <div class = "logo">
-
-    </div>
 
     <div class = "pagelink">
         <a href="home.php">Home</a>
@@ -91,7 +89,7 @@
         </form>
 
     </div>
-
+    </div>
 </nav>
 <script src="../js/searchbar.js"></script>
 

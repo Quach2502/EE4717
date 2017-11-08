@@ -2,9 +2,9 @@
 <head>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/navbar.css">
-    <link rel="stylesheet" href="../css/slider.css">
     <link rel="stylesheet" href="../css/food_thumbnail.css">
     <link rel="stylesheet" href="../css/add_item_quantity.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
 <!--    Navigation bar -->
@@ -137,8 +137,12 @@
         </section>
     </div>
 
-
 </main>
+<?php
+include "templates/footer.php";
+?>
+
+
 <script src="../js/initHomePage.js"></script>
 <script src="../js/add_item_quantity.js"></script>
 <script src="../js/searchbar.js"></script>

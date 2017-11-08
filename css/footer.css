@@ -1,0 +1,21 @@
+.site-footer{
+    display: block;
+    position: absolute;
+    /*bottom: 0;*/
+    width: 100%;
+    /*margin-top: 1000px;*/
+    /*position: fixed;*/
+    bottom: 0;
+
+}
+.site-footer .content{
+    color: #ffffff;
+    font-size: 1em;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0px;
+    font-weight: 500;
+    background: rgb(50, 50, 50);
+
+}
