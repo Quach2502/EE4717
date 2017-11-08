@@ -10,7 +10,7 @@
 <!--    Navigation bar -->
 <header id="">
     <?php
-    include "templates/ navbar.php";
+    include "templates/navbar.php";
     ?>
 </header>
 
