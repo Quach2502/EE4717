@@ -26,6 +26,7 @@ else{
 $result = $db->query($searchquery);
 if(isset($result)){
     $num_result = mysqli_num_rows($result);
+//    echo $num_result;
 }
 if ($num_result == 0){
     $search_result = new stdClass();

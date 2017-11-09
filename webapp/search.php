@@ -83,7 +83,7 @@
                         echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
                         echo "<span class='tag'>Promoted</span>";
                         echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\" onclick = \"tofoodinfo($foodId)\"></div>";
-                        echo "<span class='food-name'> Food Name: " . $foodName . "</span>";
+                        echo "<span class='food-name'>" . $foodName . "</span>";
                         //    echo "<p> Food Id: ".$imageId."</p>";
 
 

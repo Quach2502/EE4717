@@ -37,7 +37,7 @@
                 <div class="hero-text">
                     <h1>247Food Service</h1>
                     <p>The most affordable online food service in Singapore</p>
-                    <button><a href ="#food-thumbnail">Explore now</a></button>
+                    <a href ="#food-thumbnail"><button>Explore now</button></a>
                 </div>
             </div>
         </section>
@@ -148,7 +148,7 @@
                             echo "<span class='badge-info'>30<br><span class = 'label'>mins</span></span>";
                             echo "<span class='tag'>Promoted</span>";
                             echo "<div class = \"img-thumbnail\" style =\"background-image: url('$imageLink');\" onclick = \"tofoodinfo($foodId)\"></div>";
-                            echo "<span class='food-name'> Food Name: ".$foodName."</span>";
+                            echo "<span class='food-name'>".$foodName."</span>";
                             //    echo "<p> Food Id: ".$imageId."</p>";
 
 
