@@ -8,6 +8,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/home.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/hero.css">
     <link rel="stylesheet" href="../css/slider.css">
@@ -42,22 +43,47 @@
         </section>
 
         <section id="slider">
+            <div class="div-title">
+                Top sale food
+            </div>
             <div class = "slideshow-container">
                 <?php
-                    include "functions/food_query.php";
-                    for ($i=0; $i<$num_result; $i++) {
-                        $row = $result->fetch_assoc();
-                        $foodId = $row['foodid'];
-                        $foodName = $row['name'];
-                        $imageLink = "../asset/" . $row['imagelink'];
-                        $foodPrice = $row['price'];
+                    include "functions/dbconnect.php";
+                    $topfood_query = "SELECT SUM(quantity), foodid FROM orderdetails GROUP BY foodid ORDER BY SUM(quantity) DESC LIMIT 8";
+                    $topfood_result = $db->query($topfood_query);
+                    if(isset($topfood_result )) {
+                        $num_topfood_result = mysqli_num_rows($topfood_result );
+//                        echo $num_topfood_result;
 
-                        echo "<div class = 'myslider fade col four-col'>";
-                            echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\" onclick = \"tofoodinfo($foodId)\">";
-                                    echo "<div class ='caption'>".$foodName."</div>";
-                            echo "</div>";
-                        echo "</div>";
+                        for ($i = 0; $i < $num_topfood_result; $i++) {
+                            $topfood_row = $topfood_result->fetch_assoc();
+                            $foodId = $topfood_row['foodid'];
+                            $food_query = "SELECT * FROM food WHERE foodid ='$foodId' ";
+                            $result = $db->query($food_query);
 
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+
+                                $foodName = $row['name'];
+                                $imageLink = "../asset/" . $row['imagelink'];
+                                $foodPrice = $row['price'];
+
+                                echo "<div class = 'myslider fade col four-col'>";
+                                echo "<div class = \"img-slider\" style =\"background-image: url('$imageLink')\" onclick = \"tofoodinfo($foodId)\">";
+                                echo "<div class ='caption'>" . $foodName . "</div>";
+                                echo "</div>";
+                                echo "</div>";
+
+                            }
+
+                            else{
+                                echo "<p>Cannot display top sale food</p>";
+                            }
+                        }
+                    }
+
+                    else {
+                        echo "<p>Cannot display top sale food</p>";
                     }
                 ?>
 
@@ -68,6 +94,9 @@
         </section>
 
         <section id = "food-thumbnail">
+            <div class="div-title">
+                All foods
+            </div>
         <?php
 
         $userid = isset($_SESSION['valid_user'])? $_SESSION['valid_user'] : '';

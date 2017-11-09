@@ -15,9 +15,14 @@
 </header>
 
 <main>
+
     <div class="content-wrap">
 
+        <div class="div-title" style="padding-top: 30px;">
+            Search results
+        </div>
         <section id="food-thumbnail">
+
             <?php
 
             $userid = isset($_SESSION['valid_user']) ? $_SESSION['valid_user'] : '';

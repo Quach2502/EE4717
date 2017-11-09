@@ -15,6 +15,9 @@
         if(isset($_SESSION['valid_user'])){
             echo "<a href='user_info.php'>Welcome, {$_SESSION['valid_user']}</a>";
             echo '<a href="cart.php">My Cart</a>';
+            if($_SESSION['valid_user'] === 'admin'){
+                echo '<a href="admin_order_status.php">Update Order Status</a>';
+            }
             echo '<a href="logout.php">Logout</a>';
         }else{
             echo "<a href='login.php'>Login</a>";
